@@ -1,0 +1,68 @@
+<style>
+    .price-cards {
+        margin-top: 24px;
+    }
+    .price-card {
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+    }
+    .price-card__badge {
+        background-color: #e5f7ff;
+        color: #0092d0;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 20px;
+        width: fit-content;
+        padding: 4px 10px;
+        margin-bottom: 12px;
+    }
+    .price-card__price {
+        color: #0092d0;
+        font-size: 32px;
+        font-weight: 300;
+        line-height: 40px;
+        margin-bottom: 4px;
+    }
+    .price-card__title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+        margin-bottom: 8px;
+    }
+    .price-card .text {
+        color: rgba(0, 0, 0, .65);
+    }
+</style>
+
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <h2 class="title-1 mb-24"> Заголовок секции </h2>
+            <p class="text mb-24"> Нужна ли виза в Египет для россиян — вот три варианта: </p>
+            <div class="price-cards grid-auto grid-auto--3">
+                <div class="price-card">
+                    <div class="price-card__badge"> По прибытию </div>
+                    <p class="price-card__price"> 30 $ </p>
+                    <p class="price-card__title"> Виза по прибытию </p>
+                    <p class="text"> Берут прямо в аэропорту, у специальных стоек, ещё до паспортного контроля. С 1 марта 2026 года стоит 30 долларов. Действует 30 дней. Нужна для Хургады, Каира и всех городов за пределами Синайского полуострова. </p>
+                </div>
+                <div class="price-card">
+                    <div class="price-card__badge"> Бесплатно </div>
+                    <p class="price-card__price"> 0 $ </p>
+                    <p class="price-card__title"> Синайский штамп </p>
+                    <p class="text"> Бесплатный, ставится по прилёте в аэропорту Шарм-эш-Шейха. Действует до 15 суток, но только в пределах курортной зоны Южного Синая: Шарм, Дахаб, Нувейба, Таба. Захотите съездить в Каир — понадобится полноценная виза за 30 $. </p>
+                </div>
+                <div class="price-card">
+                    <div class="price-card__badge"> Онлайн </div>
+                    <p class="price-card__price"> 25 $ </p>
+                    <p class="price-card__title"> Электронная виза (e-Visa) </p>
+                    <p class="text"> Оформляется до вылета через портал visa2egypt.gov.eg. Стоит 25 $, ждать приходится от одного до трёх рабочих дней. </p>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

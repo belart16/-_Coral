@@ -1,0 +1,141 @@
+<style>
+    .banner {
+        background-image: url(https://b2ccdn.coral.ru/content/img/turkey/main_banner_stambdesc.webp);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 20px;
+        width: 100%;
+        height: 520px;
+        position: relative;
+        margin-top: 24px;
+    }
+    
+    @media screen and (max-width: 1280px) {
+        .banner {
+            height: 420px
+        }
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .banner {
+            height: 380px
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        .banner {
+            height: 520px;
+            background-image: url(https://b2ccdn.coral.ru/content/img/turkey/main_banner_stambmob.webp);
+        }
+    }
+    
+    .banner__content {
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        padding-left: 64px;
+        padding-right: 64px;
+        display: flex
+    }
+    
+    @media screen and (max-width: 768px) {
+        .banner__content {
+            padding-left: 32px;
+            padding-right: 32px
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        .banner__content {
+            justify-content: flex-start;
+            padding: 24px
+        }
+    }
+    
+    .banner__title {
+        color: #fff;
+        margin-bottom: 12px;
+        font-size: 56px;
+        font-weight: 300;
+        line-height: 64px
+    }
+    
+    @media screen and (max-width: 1280px) {
+        .banner__title {
+            font-size: 40px;
+            line-height: 48px
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        .banner__title {
+            font-size: 32px;
+            line-height: 40px
+        }
+    }
+    
+    .banner__subtitle {
+        color: #fff;
+        font-size: 20px;
+        line-height: 28px
+    }
+    
+    @media screen and (max-width: 1280px) {
+        .banner__subtitle {
+            font-size: 16px;
+            line-height: 24px
+        }
+    }
+    
+    .banner__button {
+        font-weight: 600;
+        color: #000 !important;
+        background-color: #fff;
+        border: 1px solid #fff;
+        border-radius: 48px;
+        align-items: center;
+        width: fit-content;
+        height: 48px;
+        margin-top: 24px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 16px;
+        line-height: 20px;
+        text-decoration: none !important;
+        display: flex
+    }
+    
+    .banner__button:hover {
+        color: #077dad !important;
+        border: 1px solid #077dad
+    }
+    
+    .banner__label {
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: 16px;
+        align-items: center;
+        gap: 8px;
+        height: 40px;
+        padding-left: 12px;
+        padding-right: 12px;
+        display: flex;
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+    }
+    
+</style>
+
+<section class="coral">
+    <article>
+        <div class="wrapper">
+            <div class="banner">
+                <div class="banner__content">
+                    <h1 class="banner__title"> 7 причин провести день <br>на Принцевых островах — <br>в дачном пригороде<br> Стамбула </h1>
+                    <a href="#hotels" class="banner__button"> Выбрать тур </a>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

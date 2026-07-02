@@ -1,0 +1,445 @@
+{
+  "title": "Справочник кода — библиотека блоков",
+  "subtitle_html": "Конструктор страниц Coral Travel &nbsp;·&nbsp; <span class=\"count\">{TOTAL} блоков</span> &nbsp;·&nbsp; нажмите «Копировать» и вставьте блок в нужный виджет CMS.",
+  "instruction_images": {
+    "accordion-site": "accordion-site.png",
+    "accordion-tz": "accordion-tz.png",
+    "banner-site": "banner-site.png",
+    "banner-tz": "banner-tz.png",
+    "blueline-site": "blueline-site.png",
+    "blueline-tz": "blueline-tz.png",
+    "cards-site": "cards-site.png",
+    "cards-tz": "cards-tz.png",
+    "checkmark-site": "checkmark-site.png",
+    "checkmark-tz": "checkmark-tz.png",
+    "herobanner-site": "herobanner-site.png",
+    "herobanner-tz": "herobanner-tz.png",
+    "iconblocks-site": "iconblocks-site.png",
+    "iconblocks-tz": "iconblocks-tz.png",
+    "introtext-site": "introtext-site.png",
+    "introtext-tz": "introtext-tz.png",
+    "numberblocks-site": "numberblocks-site.png",
+    "numberblocks-tz": "numberblocks-tz.png",
+    "pricecards-site": "pricecards-site.png",
+    "pricecards-tz": "pricecards-tz.png",
+    "slider-site": "slider-site.png",
+    "slider-tz": "slider-tz.png",
+    "textblock-site": "textblock-site.png",
+    "textblock-tz": "textblock-tz.png",
+    "textblocks-site": "textblocks-site.png",
+    "textblocks-tz": "textblocks-tz.png",
+    "textimage-site": "textimage-site.png",
+    "textimage-tz": "textimage-tz.png",
+    "wrapper-code": "wrapper-code.png",
+    "wrapper-mt1-code": "wrapper-mt1-code.png",
+    "wrapper-mt1-visual": "wrapper-mt1-visual.png",
+    "wrapper-visual": "wrapper-visual.png"
+  },
+  "groups": [
+    {
+      "title": "Глобальный слой",
+      "blocks": [
+        {
+          "slug": "b00",
+          "name": "Общие стили",
+          "purpose": "Глобальный слой. Вставляется на каждую страницу первым, пользователю не виден.",
+          "variants": [
+            {
+              "vslug": "b00_0",
+              "label": null,
+              "code": "codes/b00_0.txt",
+              "preview": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Каркас страницы",
+      "blocks": [
+        {
+          "slug": "b01",
+          "name": "Баннер",
+          "purpose": "Главный блок с картинкой и заголовком вверху страницы.",
+          "variants": [
+            {
+              "vslug": "b01_0",
+              "label": null,
+              "code": "codes/b01_0.txt",
+              "preview": "b01_0.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b02",
+          "name": "Навигация",
+          "purpose": "Якорное меню по разделам страницы.",
+          "variants": [
+            {
+              "vslug": "b02_0",
+              "label": null,
+              "code": "codes/b02_0.txt",
+              "preview": "b02_0.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b03",
+          "name": "Подводка (свободный текст)",
+          "purpose": "Вводный свободный текст после навигации.",
+          "variants": [
+            {
+              "vslug": "b03_0",
+              "label": null,
+              "code": "codes/b03_0.txt",
+              "preview": "b03_0.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b04",
+          "name": "Контакты",
+          "purpose": "Финальный блок со звонками.",
+          "variants": [
+            {
+              "vslug": "b04_0",
+              "label": null,
+              "code": "codes/b04_0.txt",
+              "preview": "b04_0.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Сеточные карточки",
+      "blocks": [
+        {
+          "slug": "b05",
+          "name": "Карточки",
+          "purpose": "Картинка сверху, заголовок, текст. Выберите вариант шапки — с картинкой или без.",
+          "variants": [
+            {
+              "vslug": "b05_0",
+              "label": "Без картинки",
+              "code": "codes/b05_0.txt",
+              "preview": "b05_0.jpg"
+            },
+            {
+              "vslug": "b05_1",
+              "label": "С картинкой · заголовок вне блока",
+              "code": "codes/b05_1.txt",
+              "preview": "b05_1.jpg"
+            },
+            {
+              "vslug": "b05_2",
+              "label": "С картинкой · заголовок внутри блока",
+              "code": "codes/b05_2.txt",
+              "preview": "b05_2.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b06",
+          "name": "Карточки с ценой",
+          "purpose": "Карточки с ценой и бейджем. Выберите вариант с картинкой или без.",
+          "variants": [
+            {
+              "vslug": "b06_0",
+              "label": "Без картинки",
+              "code": "codes/b06_0.txt",
+              "preview": "b06_0.jpg"
+            },
+            {
+              "vslug": "b06_1",
+              "label": "С картинкой · заголовок вне блока",
+              "code": "codes/b06_1.txt",
+              "preview": "b06_1.jpg"
+            },
+            {
+              "vslug": "b06_2",
+              "label": "С картинкой · заголовок внутри блока",
+              "code": "codes/b06_2.txt",
+              "preview": "b06_2.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b07",
+          "name": "Плашки с галочками",
+          "purpose": "Короткие пункты-достоинства с галочкой. Выберите вариант шапки — с картинкой или без.",
+          "variants": [
+            {
+              "vslug": "b07_0",
+              "label": "Без картинки",
+              "code": "codes/b07_0.txt",
+              "preview": "b07_0.jpg"
+            },
+            {
+              "vslug": "b07_1",
+              "label": "С картинкой · заголовок вне блока",
+              "code": "codes/b07_1.txt",
+              "preview": "b07_1.jpg"
+            },
+            {
+              "vslug": "b07_2",
+              "label": "С картинкой · заголовок внутри блока",
+              "code": "codes/b07_2.txt",
+              "preview": "b07_2.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b08",
+          "name": "Плашки с синей линией",
+          "purpose": "Карточки с акцентной синей линией слева. Выберите вариант шапки — с картинкой или без.",
+          "variants": [
+            {
+              "vslug": "b08_0",
+              "label": "Без картинки",
+              "code": "codes/b08_0.txt",
+              "preview": "b08_0.jpg"
+            },
+            {
+              "vslug": "b08_1",
+              "label": "С картинкой · заголовок вне блока",
+              "code": "codes/b08_1.txt",
+              "preview": "b08_1.jpg"
+            },
+            {
+              "vslug": "b08_2",
+              "label": "С картинкой · заголовок внутри блока",
+              "code": "codes/b08_2.txt",
+              "preview": "b08_2.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b09",
+          "name": "Плашки с цифрами",
+          "purpose": "Пронумерованные шаги или пункты. Выберите вариант шапки — с картинкой или без.",
+          "variants": [
+            {
+              "vslug": "b09_0",
+              "label": "Без картинки",
+              "code": "codes/b09_0.txt",
+              "preview": "b09_0.jpg"
+            },
+            {
+              "vslug": "b09_1",
+              "label": "С картинкой · заголовок вне блока",
+              "code": "codes/b09_1.txt",
+              "preview": "b09_1.jpg"
+            },
+            {
+              "vslug": "b09_2",
+              "label": "С картинкой · заголовок внутри блока",
+              "code": "codes/b09_2.txt",
+              "preview": "b09_2.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b10",
+          "name": "Плашки с иконками",
+          "purpose": "Пункты с иконкой и заголовком. Выберите вариант шапки — с картинкой или без.",
+          "variants": [
+            {
+              "vslug": "b10_0",
+              "label": "Без картинки",
+              "code": "codes/b10_0.txt",
+              "preview": "b10_0.jpg"
+            },
+            {
+              "vslug": "b10_1",
+              "label": "С картинкой · заголовок вне блока",
+              "code": "codes/b10_1.txt",
+              "preview": "b10_1.jpg"
+            },
+            {
+              "vslug": "b10_2",
+              "label": "С картинкой · заголовок внутри блока",
+              "code": "codes/b10_2.txt",
+              "preview": "b10_2.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b11",
+          "name": "Плашки с текстом",
+          "purpose": "Ряд коротких текстовых плашек одинаковой высоты.",
+          "variants": [
+            {
+              "vslug": "b11_0",
+              "label": null,
+              "code": "codes/b11_0.txt",
+              "preview": "b11_0.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Панельные",
+      "blocks": [
+        {
+          "slug": "b12",
+          "name": "Текст с картинкой",
+          "purpose": "Чередующийся блок «текст + картинка». Выберите сторону и положение заголовка.",
+          "variants": [
+            {
+              "vslug": "b12_0",
+              "label": "Картинка справа · заголовок вне блока",
+              "code": "codes/b12_0.txt",
+              "preview": "b12_0.jpg"
+            },
+            {
+              "vslug": "b12_1",
+              "label": "Картинка слева · заголовок вне блока",
+              "code": "codes/b12_1.txt",
+              "preview": "b12_1.jpg"
+            },
+            {
+              "vslug": "b12_2",
+              "label": "Картинка справа · заголовок внутри блока",
+              "code": "codes/b12_2.txt",
+              "preview": "b12_2.jpg"
+            },
+            {
+              "vslug": "b12_3",
+              "label": "Картинка слева · заголовок внутри блока",
+              "code": "codes/b12_3.txt",
+              "preview": "b12_3.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b13",
+          "name": "Текстовый блок + ссылки",
+          "purpose": "Текстовый блок (панель без картинки) со ссылками.",
+          "variants": [
+            {
+              "vslug": "b13_0",
+              "label": null,
+              "code": "codes/b13_0.txt",
+              "preview": "b13_0.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Интерактивные",
+      "blocks": [
+        {
+          "slug": "b14",
+          "name": "Слайдер",
+          "purpose": "Горизонтальная карусель карточек (Swiper). Выберите вариант шапки — с картинкой или без.",
+          "variants": [
+            {
+              "vslug": "b14_0",
+              "label": "Без картинки",
+              "code": "codes/b14_0.txt",
+              "preview": "b14_0.jpg"
+            },
+            {
+              "vslug": "b14_1",
+              "label": "С картинкой · заголовок вне блока",
+              "code": "codes/b14_1.txt",
+              "preview": "b14_1.jpg"
+            },
+            {
+              "vslug": "b14_2",
+              "label": "С картинкой · заголовок внутри блока",
+              "code": "codes/b14_2.txt",
+              "preview": "b14_2.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b15",
+          "name": "Раскрывашка (аккордеон)",
+          "purpose": "Сворачиваемые «вопрос → ответ», обычно FAQ.",
+          "variants": [
+            {
+              "vslug": "b15_0",
+              "label": null,
+              "code": "codes/b15_0.txt",
+              "preview": "b15_0.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b16",
+          "name": "Табы",
+          "purpose": "Переключение контента по вкладкам.",
+          "variants": [
+            {
+              "vslug": "b16_0",
+              "label": null,
+              "code": "codes/b16_0.txt",
+              "preview": "b16_0.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Специальные",
+      "blocks": [
+        {
+          "slug": "b17",
+          "name": "Текст на большой картинке",
+          "purpose": "Крупная карточка с фоновой картинкой и плашкой текста.",
+          "variants": [
+            {
+              "vslug": "b17_0",
+              "label": null,
+              "code": "codes/b17_0.txt",
+              "preview": "b17_0.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b18",
+          "name": "Климат",
+          "purpose": "Блок погоды и климата по месяцам.",
+          "variants": [
+            {
+              "vslug": "b18_0",
+              "label": null,
+              "code": "codes/b18_0.txt",
+              "preview": "b18_0.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b19",
+          "name": "Таблица",
+          "purpose": "Таблица (например, авиарейсы).",
+          "variants": [
+            {
+              "vslug": "b19_0",
+              "label": null,
+              "code": "codes/b19_0.txt",
+              "preview": "b19_0.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "b20",
+          "name": "SEO ссылки",
+          "purpose": "Перелинковка: колонки списков ссылок в аккордеоне.",
+          "variants": [
+            {
+              "vslug": "b20_0",
+              "label": null,
+              "code": "codes/b20_0.txt",
+              "preview": "b20_0.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

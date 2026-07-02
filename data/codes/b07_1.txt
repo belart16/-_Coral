@@ -1,0 +1,95 @@
+<style>
+    .feature-card {
+        background-color: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .feature-card__icon {
+        color: #fff;
+        background-color: #0092d0;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        font-size: 16px;
+        font-weight: 600;
+        display: flex;
+    }
+    .feature-card__title {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 24px;
+        margin-bottom: 4px;
+        color: #0E2855;
+    }
+</style>
+
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <h2 class="title-1 mb-24"> Заголовок </h2>
+            <div class="panel">
+                <div class="panel__col">
+                    <div class="panel__info">
+                        <p class="text"> Текст </p>
+                    </div>
+                </div>
+                <div class="panel__img" style="background-image: url(https://b2ccdn.coral.ru/content/img/turkey/main_banner_windalan.webp);">
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <!--p class="text mb-24"> Текст </p-->
+            <div class="grid-auto grid-auto--6">
+                <div class="feature-card">
+                    <div class="feature-card__icon"> ✓ </div>
+                    <div class="feature-card__body">
+                        <p class="feature-card__title"> Заголовок </p>
+                        <p class="text"> Просторные номера с кондиционером, мини-баром, сейфом и балконом </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"> ✓ </div>
+                    <div class="feature-card__body">
+                        <p class="feature-card__title"> Заголовок </p>
+                        <p class="text"> Бесплатный Wi-Fi в общественных зонах и часто в номерах </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"> ✓ </div>
+                    <div class="feature-card__body">
+                        <p class="feature-card__title"> Заголовок </p>
+                        <p class="text"> Один или несколько бассейнов (открытый, детский, иногда с подогревом) </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"> ✓ </div>
+                    <div class="feature-card__body">
+                        <p class="feature-card__title"> Заголовок </p>
+                        <p class="text"> Питание по системе «всё включено» или «завтрак + ужин» </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"> ✓ </div>
+                    <div class="feature-card__body">
+                        <p class="feature-card__title"> Заголовок </p>
+                        <p class="text"> Собственный или муниципальный пляж с лежаками и зонтами </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon"> ✓ </div>
+                    <div class="feature-card__body">
+                        <p class="feature-card__title"> Заголовок </p>
+                        <p class="text"> Анимация, фитнес-зал, спа-услуги (часто за доплату) </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

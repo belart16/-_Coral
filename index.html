@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Справочник кода · библиотека блоков · Coral Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="wrap">
+  <aside>
+    <img class="logo" alt="Coral Travel — справочник кода" src="assets/coral_logo.svg">
+    <input class="search" id="search" type="search" placeholder="Поиск блока…" autocomplete="off">
+    <nav id="nav"></nav>
+  </aside>
+  <main>
+    <div class="hero">
+      <h1 id="hero-title">Справочник кода — библиотека блоков</h1>
+      <p id="hero-subtitle"></p>
+    </div>
+    <div id="blocks-root"></div>
+    <div class="empty" id="empty">Ничего не найдено.</div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-head">
+      <h3 class="modal-title" id="modal-title"></h3>
+      <button class="modal-close" id="modal-close" type="button" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

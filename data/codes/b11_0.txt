@@ -1,0 +1,39 @@
+<style>
+    .pad {
+        grid-auto-rows: minmax(88px, auto);
+    }
+    .pad__block {
+        background-color: #d2e9fb;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 32px;
+    }
+</style>
+
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <h2 class="title-1 mb-24"> Заголовок секции </h2>
+            <!--p class="text mb-24"> Текст </p-->
+            <div class="pad grid-auto grid-auto--5">
+                <div class="pad__block">
+                    <p class="text"> Местные сладости: пахлава, рахат-лукум, пишмание </p>
+                </div>
+                <div class="pad__block">
+                    <p class="text"> Турецкий чай </p>
+                </div>
+                <div class="pad__block">
+                    <p class="text"> Изделия из кожи </p>
+                </div>
+                <div class="pad__block">
+                    <p class="text"> Антиквариат </p>
+                </div>
+                <div class="pad__block">
+                    <p class="text"> Ювелирные украшения </p>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

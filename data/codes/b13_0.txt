@@ -1,0 +1,17 @@
+<section class="coral">
+    <article>
+        <div class="wrapper">
+            <!--h2 class="title-1 mb-24"> Заголовок </h2-->
+            <!--p class="text mb-24"> Текст </p-->
+            <div class="panel">
+                <div class="panel__col">
+                    <div class="panel__info">
+                        <p class="text">И это далеко не все <a href="https://www.coral.ru/main/turkey/" class="text">курорты Турции</a> — их здесь сотни, поэтому легко найти вариант под любое настроение: престижный и респектабельный <a href="https://www.coral.ru/main/turkey/antalya/belek/" class="text">Белек</a> с роскошными 5* резортами и полями для гольфа, живописный <a href="https://www.coral.ru/main/turkey/dalaman/fethie/oludeniz/" class="text">Олюдениз</a> с бирюзовыми лагунами и парапланами, богемный <a href="https://www.coral.ru/main/turkey/bodrum/" class="text">Бодрум</a> с шикарными яхтами и бурной ночной жизнью, уютный и колоритный <a href="https://www.coral.ru/main/turkey/antalya/side/" class="text">Сиде</a> с античными руинами и идеальными условиями для семей. И множество других потрясающих мест на любой вкус и бюджет.</p>
+                        <p class="text"> В Турции — более 550 пляжей, отмеченных «Голубым флагом», и почти половина из них — в регионе Антальи. Это международная награда за чистоту, экологичность, удобную и безопасную инфраструктуру. Такие пляжи есть на всех популярных турецких курортах — ухоженные, с прозрачной водой, удобным заходом в море, фуд-кортами, бесплатными туалетами, душами, раздевалками. </p>
+                        <p class="text">Разобраться, где лучше отдыхать в Турции, легче с Coral Travel. Мы сделаем путешествие легким и комфортным — от подбора тура, отеля и <a href="https://www.coral.ru/tickets/" class="text">авиабилетов</a> до дополнительных услуг, включая <a href="https://www.coral.ru/poleznaya-informatsiya/info/assurance/" class="text">страхование туристов</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

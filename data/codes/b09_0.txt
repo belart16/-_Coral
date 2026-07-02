@@ -1,0 +1,64 @@
+<style>
+    .choose-card {
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+    }
+    .choose-card__num {
+        color: #fff;
+        background-color: #0092d0;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        margin-bottom: 12px;
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+    }
+    .choose-card__title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+        margin-bottom: 8px;
+    }
+</style>
+
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <h2 class="title-1 mb-24"> Заголовок секции </h2>
+            <!--p class="text mb-24"> Текст </p-->
+            <div class="grid-auto grid-auto--5">
+                <div class="choose-card">
+                    <div class="choose-card__num"> 1 </div>
+                    <p class="choose-card__title"> Заголовок </p>
+                    <p class="text"> Первая линия или тишина в глубине курорта, активная анимация или спокойный релакс. </p>
+                </div>
+                <div class="choose-card">
+                    <div class="choose-card__num"> 2 </div>
+                    <p class="choose-card__title"> Заголовок </p>
+                    <p class="text"> Изучайте отзывы за последние 3–6 месяцев – актуальная информация о сервисе важнее общих оценок. </p>
+                </div>
+                <div class="choose-card">
+                    <div class="choose-card__num"> 3 </div>
+                    <p class="choose-card__title"> Заголовок </p>
+                    <p class="text"> Иногда сдвиг на 2–3 дня снижает стоимость тура на 15–20%. </p>
+                </div>
+                <div class="choose-card">
+                    <div class="choose-card__num"> 4 </div>
+                    <p class="choose-card__title"> Заголовок </p>
+                    <p class="text"> Для отдыха с детьми важны детский бассейн, меню и анимация; для пар – спа, ужины при свечах, приватность. </p>
+                </div>
+                <div class="choose-card">
+                    <div class="choose-card__num"> 5 </div>
+                    <p class="choose-card__title"> Заголовок </p>
+                    <p class="text"> Если планируете работать в отпуске, уточните скорость и стабильность соединения. </p>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

@@ -1,0 +1,195 @@
+<style>
+    .slider-block {
+        position: relative;
+    }
+    
+    .slider__slide.swiper-slide {
+        background-color: #fff;
+        border-radius: 20px;
+        flex-direction: column;
+        height: auto;
+        display: flex
+    }
+    
+    .slider__info {
+        border-radius: 0 0 20px 20px;
+        flex: 1;
+        padding: 16px 24px
+    }
+    
+    .slider__img {
+        object-fit: cover;
+        object-position: center;
+        border-radius: 20px 20px 0 0;
+        height: 164px;
+        display: flex
+    }
+    
+    .slider__title {
+        margin-bottom: 8px;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px
+    }
+    
+    .slider__prev {
+        left: -40px;
+        transform: translate(-50%, -50%)
+    }
+    
+    .slider__next {
+        right: -40px;
+        transform: translate(50%, -50%)
+    }
+    
+    .slider__prev,
+    .slider__next {
+        z-index: 1;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: #fff;
+        border-radius: 40px;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        position: absolute;
+        top: 50%;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .1)
+    }
+    
+    @media screen and (max-width: 768px) {
+    
+        .slider__prev,
+        .slider__next {
+            display: none
+        }
+    }
+    
+    .slider-block--locked .slider__prev,
+    .slider-block--locked .slider__next,
+    .slider-block--locked .swiper-pagination {
+        display: none
+    }
+</style>
+
+<div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+</div>
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <h2 class="title-1 mb-24"> Заголовок секции </h2>
+            <p class="text mb-24"> Ниже представленны несколько вариантов, в которых вы сможете чувствовать себя комфортно: </p>
+            <div class="slider-block" data-per-view="4">
+                <div class="swiper slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slider__slide">
+                            <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2059822544_1.webp">
+                            <div class="slider__info">
+                                <h3 class="slider__title"> Заголовок </h3>
+                                <p class="text"> Этот вариант подходит для тех, кто не мыслит отпуск без вечерних променадов по набережной и хочет совмещать пляж с экскурсиями. Отели в самом Сиде находятся в шаговой доступности от знаменитого амфитеатра и музея под открытым небом. </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide slider__slide">
+                            <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2326138831_2_1.webp">
+                            <div class="slider__info">
+                                <h3 class="slider__title"> Заголовок </h3>
+                                <p class="text"> Если вы ищете классический отпуск в Турции с широкой песчаной полосой и пологим входом в море, вам сюда. Чолаклы – это бесконечная череда отелей, выстроившихся вдоль побережья. Здесь сконцентрированы самые популярные отели Сиде с большими зелеными территориями. </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide slider__slide">
+                            <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2062061696_1.webp">
+                            <div class="slider__info">
+                                <h3 class="slider__title"> Заголовок </h3>
+                                <p class="text"> Небольшой поселок рядом с Чолаклы. Здесь спокойнее, меньше ветра и намного тише. Отели в Кумкее часто выбирают те, кто едет с совсем маленькими детьми или ценит уединение. Пляжи здесь такие же отличные, песчаные, но сам поселок менее загружен туристами. </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide slider__slide">
+                            <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2264843483_1.webp">
+                            <div class="slider__info">
+                                <h3 class="slider__title"> Заголовок </h3>
+                                <p class="text"> Часто в поиске туров в Сиде вам будут предлагать отели в этих локациях. Это отдаленные районы, где строят огромные отельные комплексы. Плюсы: большие территории, где можно гулять часами, собственные аквапарки и зоопарки, концепция ультра «все включено» 24/7. </p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide slider__slide">
+                            <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2326138831_2_1.webp">
+                            <div class="slider__info">
+                                <h3 class="slider__title"> Заголовок </h3>
+                                <p class="text">Отель высокого уровня с просторной территорией и комфортными номерами. Концепция «всё включено» с качественным сервисом и разнообразной кухней. Пляж в шаговой доступности, есть бассейны, спа и спортивные зоны. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider__pagination swiper-pagination"></div>
+                </div>
+
+                <div class="slider__next"> <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+                        <path d="M1 1L7 7L1 13" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg> </div>
+                <div class="slider__prev"> <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+                        <path d="M7 1L1 7L7 13" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg> </div>
+            </div>
+        </div>
+    </article>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    async function hostReactAppReady(selector = "#__next > div", timeout = 500, ) {
+        return new Promise((resolve) => {
+            const waiter = () => {
+                const host_el = document.querySelector(selector);
+                if (host_el?.getBoundingClientRect().height) {
+                    resolve();
+                } else {
+                    setTimeout(waiter, timeout);
+                }
+            };
+            waiter();
+        });
+    }
+    hostReactAppReady().then(() => {
+        document.querySelectorAll(".slider-block").forEach((block) => {
+            const swiperEl = block.querySelector(".swiper");
+            if (!swiperEl) return;
+            const perView = parseInt(block.dataset.perView || "3", 10);
+            const slidesCount = swiperEl.querySelectorAll(".swiper-slide").length;
+            const swiper = new Swiper(swiperEl, {
+                slidesPerView: 1,
+                spaceBetween: 24,
+                loop: slidesCount >= perView * 2,
+                watchOverflow: true,
+                breakpoints: {
+                    768: {
+                        slidesPerView: Math.min(2, perView),
+                        spaceBetween: 24,
+                    },
+                    1024: {
+                        slidesPerView: perView,
+                        spaceBetween: 24,
+                    },
+                },
+                pagination: {
+                    el: block.querySelector(".swiper-pagination"),
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: block.querySelector(".slider__next"),
+                    prevEl: block.querySelector(".slider__prev"),
+                },
+                on: {
+                    lock() {
+                        block.classList.add("slider-block--locked");
+                    },
+                    unlock() {
+                        block.classList.remove("slider-block--locked");
+                    },
+                },
+            });
+            block.classList.toggle("slider-block--locked", swiper.isLocked);
+        });
+    });
+</script>

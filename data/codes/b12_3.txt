@@ -1,0 +1,17 @@
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <div class="panel panel--reverse">
+                <div class="panel__col">
+                    <div class="panel__info">
+                        <h2 class="title-2 mb-16"> В августе самое время насладиться отдыхом «Все включено» и полежать у бассейна </h2>
+                        <p class="text"> Для тех, кто любит надолго прилечь у бассейна, в августе отели ОАЭ предусмотрели самые низкие цены в году. Из-за высоких температур посещение пляжа рекомендовано только до 8 утра или после 18 вечера. </p>
+                        <p class="text"> Однако в ультрасовременных отелях с кондиционерами и аквапарках, вроде «Айсланд» в Аджмане, проводить время — настоящее удовольствие. </p>
+                    </div>
+                </div>
+                <div class="panel__img" style="background-image: url(https://b2ccdn.coral.ru/content/img/vietnam/shutterstock_1682241598.webp);">
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

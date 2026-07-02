@@ -1,0 +1,39 @@
+<style>
+    .accent-card {
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        border-left: 4px solid #0092d0;
+    }
+    .accent-card__title {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 24px;
+        margin-bottom: 8px;
+    }
+</style>
+
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <h2 class="title-1 mb-24"> Заголовок секции </h2>
+            <!--p class="text mb-24"> Текст </p-->
+            <div class="grid-auto grid-auto--3">
+                <div class="accent-card">
+                    <p class="accent-card__title"> Заголовок карточки </p>
+                    <p class="text"> Текст карточки. </p>
+                </div>
+                <div class="accent-card">
+                    <p class="accent-card__title"> Заголовок карточки </p>
+                    <p class="text"> Текст карточки. </p>
+                </div>
+                <div class="accent-card">
+                    <p class="accent-card__title"> Заголовок карточки </p>
+                    <p class="text"> Текст карточки. </p>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

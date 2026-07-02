@@ -1,0 +1,71 @@
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <h2 class="title-1 mb-24"> Ответы на популярные вопросы </h2>
+            <p class="text mb-24"> Отвечаем на вопросы, которые чаще всего задают путешественники. </p>
+            <div class="coral-toggle js-toggle">
+                <div class="coral-toggle__header js-toggle-header">
+                    <h3 class="title-5">Можно ли купаться в море зимой (в январе–феврале)?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <div class="coral-toggle__body js-toggle-body">
+                    <p class="text"> Да, купаться можно, но вода по местным меркам прохладная — около +21 °C. </p>
+                </div>
+            </div>
+            <div class="coral-toggle js-toggle">
+                <div class="coral-toggle__header js-toggle-header">
+                    <h3 class="title-5">Как правильно спланировать свой день на отдыхе?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <div class="coral-toggle__body js-toggle-body">
+                    <p class="text"> В жарком климате все активности лучше планировать на утро и вечер, а днем устраивать для себя комфортную сиесту у бассейна, в океанариуме или номере отеля. В зимнее время можно больше уделять внимание прогулкам, экскурсиям и изучению самих городов, а в бархатный сезон — купанию. </p>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+<script>
+    async function hostReactAppReady(selector = "#__next > div", timeout = 500) {
+        return new Promise((resolve) => {
+            const waiter = () => {
+                const host_el = document.querySelector(selector);
+                if (host_el?.getBoundingClientRect().height) {
+                    resolve();
+                } else {
+                    setTimeout(waiter, timeout);
+                }
+            };
+            waiter();
+        });
+    }
+    hostReactAppReady().then(() => {
+        const toggles = document.querySelectorAll(".js-toggle");
+        toggles.forEach(toggle => {
+            if (toggle.dataset.toggleBound) return; // уже привязан — пропускаем
+            toggle.dataset.toggleBound = "1";
+            const header = toggle.querySelector(".js-toggle-header");
+            const body = toggle.querySelector(".js-toggle-body");
+            header.addEventListener("click", () => {
+                const isOpen = toggle.classList.contains("active");
+                if (isOpen) {
+                    closeAccordion(toggle, body);
+                } else {
+                    openAccordion(toggle, body);
+                }
+            });
+        });
+
+        function openAccordion(container, body) {
+            container.classList.add("active");
+            body.style.maxHeight = body.scrollHeight + "px";
+        }
+
+        function closeAccordion(container, body) {
+            container.classList.remove("active");
+            body.style.maxHeight = 0;
+        }
+    });
+</script>

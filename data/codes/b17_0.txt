@@ -1,0 +1,63 @@
+<style>
+    .big-card {
+        background-image: var(--bg);
+        background-position: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 20px;
+        padding: 8px;
+        min-height: 260px;
+    }
+    @media screen and (max-width: 1024px) {
+        .big-card {
+            background-image: var(--bg-m);
+            align-items: flex-end;
+            min-height: 712px;
+            display: flex;
+        }
+    }
+    .big-card__block {
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        background-color: rgba(0, 0, 0, .5);
+        border-radius: 16px;
+        max-width: 548px;
+        padding: 24px;
+    }
+    @media screen and (max-width: 1024px) {
+        .big-card__block {
+            width: 100%;
+            max-width: unset;
+        }
+        .big-card__block a.coral-button {
+            justify-content: center;
+            width: 100%;
+        }
+    }
+    .big-card__title {
+        color: #fff;
+        margin-bottom: 8px;
+    }
+    .big-card .text {
+        color: #fff;
+    }
+    .big-card .coral-button {
+        margin-top: 16px;
+    }
+</style>
+
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <!--h2 class="title-1 mb-24"> Заголовок секции </h2-->
+            <!--p class="text mb-24"> Текст </p-->
+            <div class="big-card" style="--bg: url(//b2ccdn.coral.ru/content/landing-pages/turkey/stambul/bg.webp); --bg-m: url(//b2ccdn.coral.ru/content/landing-pages/turkey/stambul/bg_m.webp);">
+                <div class="big-card__block">
+                    <h2 class="big-card__title title-3"> Заголовок </h2>
+                    <p class="text"> В привычный для европейцев отпускной период – летом – в ОАЭ слишком жарко. Днем в тени от +38 до +42С и выше, а вода в Персидском заливе прогревается до +31-34С. До комфортной температуры вода за ночь остывает только на мелководье. Семейные отели в ОАЭ лучше всего адаптированы для таких жестких климатических условий. Но, большую часть времени придется проводить в закрытых помещениях и выходить на улицу только ночью. Это совершенно неприемлемо для малышей, поэтому для отдыха с детьми в ОАЭ лучше выбрать другой период.</p>
+                    <a href="" class="coral-button"> Забронировать тур </a>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
