@@ -130,10 +130,11 @@
 
     /* Сайдбар превращается в выезжающую справа панель */
     aside {
-      position:fixed; top:0; right:0; left:auto; height:100vh; width:min(330px, 86vw);
+      position:fixed; top:0; right:0; left:auto; height:100vh; height:100dvh; width:min(330px, 86vw);
       transform:translateX(105%); transition:transform .28s cubic-bezier(.4,0,.2,1);
       border-right:none; border-left:1px solid var(--line); border-bottom:none;
-      box-shadow:-14px 0 40px rgba(11,60,93,.18); z-index:60; padding:52px 18px 40px;
+      box-shadow:-14px 0 40px rgba(11,60,93,.18); z-index:60; padding:52px 18px 96px;
+      -webkit-overflow-scrolling:touch;
     }
     aside.open { transform:translateX(0); }
 
