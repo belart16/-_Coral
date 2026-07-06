@@ -1,6 +1,3 @@
-/* Справочник кода Coral Travel — клиентский рендер из data/*.json.
-   Данные грузятся по относительным путям (нужен http:// — Live Server / GitHub Pages,
-   двойной клик по file:// не сработает из-за политики fetch в браузере). */
 
 'use strict';
 
@@ -10,8 +7,6 @@ const LABEL_RE = /^(css|html|js|javascript)(\s+expand\s+source)?$/i;
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-/* <img> с автоподбором расширения: пробуем расширение из JSON, затем png/jpg/jpeg/webp.
-   Позволяет класть картинки в любом из этих форматов под одним базовым именем. */
 function imgTag(folder, file, alt, cls) {
   const base = file.replace(/\.[^.]+$/, '');
   const mm = file.match(/\.([^.]+)$/);
@@ -28,10 +23,10 @@ window.imgFallback = function (img) {
   else { img.onerror = null; img.style.visibility = 'hidden'; }
 };
 
-let INSTR_IMAGES = {};   // ключ IMGROW -> имя файла в img/instruction/
-let DESCRIPTIONS = {};   // slug -> сырой текст инструкции
+let INSTR_IMAGES = {};  
+let DESCRIPTIONS = {};   
 
-/* ---------- рендер инструкции (те же маркеры, что в сборщике) ---------- */
+/* рендер инструкции (те же маркеры, что в сборщике) */
 function imgRow(spec) {
   const parts = spec.split('|').map((s) => s.trim());
   const cells = [];
@@ -73,7 +68,7 @@ function renderHelp(raw) {
   return out.join('');
 }
 
-/* ---------- построение блоков и навигации ---------- */
+/* построение блоков и навигации */
 function copyBtn(vslug, name, small) {
   const cls = small ? 'copy-btn sm' : 'copy-btn';
   return '<button class="' + cls + '" data-code="' + vslug + '" type="button" aria-label="Копировать код «' + esc(name) + '»">' +
@@ -132,7 +127,7 @@ function build(data) {
   return codeJobs;
 }
 
-/* ---------- загрузка кода блоков в <code> ---------- */
+/* загрузка кода блоков в <code> */
 async function loadCode(v) {
   const el = document.getElementById('code-' + v.vslug);
   if (!el) return;
@@ -147,7 +142,7 @@ async function loadCode(v) {
   }
 }
 
-/* ---------- копирование, модалка, поиск, scroll-spy ---------- */
+/* копирование, модалка, поиск, scroll-spy */
 async function copyText(t) {
   try { await navigator.clipboard.writeText(t); return true; }
   catch (e) {
@@ -223,7 +218,7 @@ function wire() {
   blocks.forEach((b) => obs.observe(b));
 }
 
-/* ---------- старт ---------- */
+/* старт */
 (async function init() {
   try {
     const [blocksData, descData] = await Promise.all([
