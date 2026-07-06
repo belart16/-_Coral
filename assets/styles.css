@@ -119,10 +119,51 @@
   .modal-body .help-wip { text-align:center; color:var(--muted); font-size:14px; font-weight:600;
     padding:26px 0; border:1px dashed var(--line); border-radius:12px; background:var(--page); }
 
+  /* Мобильная навигация: скрытые по умолчанию элементы (видны только на узких экранах) */
+  .nav-fab { display:none; }
+  .nav-close { display:none; }
+  .nav-backdrop { display:none; }
+
   @media (max-width:880px) {
     .wrap { grid-template-columns:1fr; }
-    aside { position:static; height:auto; border-right:none; border-bottom:1px solid var(--line); }
-    main { padding:28px 18px 90px; }
+    main { padding:28px 18px 96px; }
+
+    /* Сайдбар превращается в выезжающую справа панель */
+    aside {
+      position:fixed; top:0; right:0; left:auto; height:100vh; width:min(330px, 86vw);
+      transform:translateX(105%); transition:transform .28s cubic-bezier(.4,0,.2,1);
+      border-right:none; border-left:1px solid var(--line); border-bottom:none;
+      box-shadow:-14px 0 40px rgba(11,60,93,.18); z-index:60; padding:52px 18px 40px;
+    }
+    aside.open { transform:translateX(0); }
+
+    /* Плавающая кнопка — доступна с любого места прокрутки */
+    .nav-fab {
+      display:flex; position:fixed; right:18px; bottom:18px; z-index:56;
+      width:54px; height:54px; border-radius:50%; border:none; cursor:pointer;
+      align-items:center; justify-content:center;
+      background:var(--brand); color:#fff; box-shadow:0 6px 20px rgba(0,146,208,.44);
+    }
+    .nav-fab:active { transform:scale(.94); }
+    body.nav-open .nav-fab { display:none; }
+
+    /* Крестик внутри панели */
+    .nav-close {
+      display:flex; position:absolute; top:12px; right:12px; width:36px; height:36px;
+      border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--muted);
+      font-size:16px; line-height:1; cursor:pointer; align-items:center; justify-content:center; z-index:2;
+    }
+    .nav-close:hover { color:var(--brand-d); border-color:var(--brand); }
+
+    /* Затемнение фона */
+    .nav-backdrop {
+      display:block; position:fixed; inset:0; background:rgba(11,32,45,.44); z-index:58;
+      opacity:0; pointer-events:none; transition:opacity .28s;
+    }
+    body.nav-open .nav-backdrop { opacity:1; pointer-events:auto; }
+    body.nav-open { overflow:hidden; }
+
+    .logo { margin-top:0; }
   }
   @media (max-width:560px) {
     .block-head { flex-direction:column; align-items:stretch; gap:12px; }

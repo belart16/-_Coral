@@ -26,7 +26,7 @@ window.imgFallback = function (img) {
 let INSTR_IMAGES = {};   
 let DESCRIPTIONS = {};   
 
-/* рендер инструкции (те же маркеры, что в сборщике) */
+/* рендер инструкции */
 function imgRow(spec) {
   const parts = spec.split('|').map((s) => s.trim());
   const cells = [];
@@ -196,6 +196,22 @@ function wire() {
   });
 
   const byId = Object.fromEntries(navlinks.map((a) => [a.dataset.target, a]));
+
+  /* мобильная выезжающая панель навигации */
+  const sidebar = document.getElementById('sidebar');
+  const fab = document.getElementById('nav-toggle');
+  const navClose = document.getElementById('nav-close');
+  const backdrop = document.getElementById('nav-backdrop');
+  const isMobile = () => window.matchMedia('(max-width:880px)').matches;
+  const openNav = () => { sidebar.classList.add('open'); document.body.classList.add('nav-open'); if (fab) fab.setAttribute('aria-expanded', 'true'); };
+  const closeNav = () => { sidebar.classList.remove('open'); document.body.classList.remove('nav-open'); if (fab) fab.setAttribute('aria-expanded', 'false'); };
+  if (fab) fab.addEventListener('click', openNav);
+  if (navClose) navClose.addEventListener('click', closeNav);
+  if (backdrop) backdrop.addEventListener('click', closeNav);
+  navlinks.forEach((a) => a.addEventListener('click', () => { if (isMobile()) closeNav(); }));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
+  window.addEventListener('resize', () => { if (!isMobile()) closeNav(); });
+
   const obs = new IntersectionObserver((ents) => {
     ents.forEach((e) => { if (e.isIntersecting) { navlinks.forEach((a) => a.classList.remove('active')); const a = byId[e.target.id]; if (a) a.classList.add('active'); } });
   }, { rootMargin: '-18% 0px -72% 0px', threshold: 0 });

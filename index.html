@@ -11,7 +11,8 @@
 </head>
 <body>
 <div class="wrap">
-  <aside>
+  <aside id="sidebar">
+    <button class="nav-close" id="nav-close" type="button" aria-label="Закрыть меню">✕</button>
     <img class="logo" alt="Coral Travel — справочник кода" src="assets/coral_logo.svg">
     <input class="search" id="search" type="search" placeholder="Поиск блока…" autocomplete="off">
     <nav id="nav"></nav>
@@ -35,6 +36,13 @@
     <div class="modal-body" id="modal-body"></div>
   </div>
 </div>
+
+<button class="nav-fab" id="nav-toggle" type="button" aria-label="Открыть навигацию и поиск" aria-controls="sidebar" aria-expanded="false">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true">
+    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</button>
+<div class="nav-backdrop" id="nav-backdrop"></div>
 
 <script src="assets/app.js"></script>
 </body>
