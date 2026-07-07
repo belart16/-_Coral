@@ -3,6 +3,8 @@
         <div class="wrapper mt-1">
             <h2 class="title-1 mb-24"> Ответы на популярные вопросы </h2>
             <p class="text mb-24"> Отвечаем на вопросы, которые чаще всего задают путешественники. </p>
+
+            <!-- Раскрывашка 1 -->
             <div class="coral-toggle js-toggle">
                 <div class="coral-toggle__header js-toggle-header">
                     <h3 class="title-5">Можно ли купаться в море зимой (в январе–феврале)?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
@@ -13,6 +15,8 @@
                     <p class="text"> Да, купаться можно, но вода по местным меркам прохладная — около +21 °C. </p>
                 </div>
             </div>
+
+            <!-- Раскрывашка 2 -->
             <div class="coral-toggle js-toggle">
                 <div class="coral-toggle__header js-toggle-header">
                     <h3 class="title-5">Как правильно спланировать свой день на отдыхе?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
@@ -21,6 +25,54 @@
                 </div>
                 <div class="coral-toggle__body js-toggle-body">
                     <p class="text"> В жарком климате все активности лучше планировать на утро и вечер, а днем устраивать для себя комфортную сиесту у бассейна, в океанариуме или номере отеля. В зимнее время можно больше уделять внимание прогулкам, экскурсиям и изучению самих городов, а в бархатный сезон — купанию. </p>
+                </div>
+            </div>
+
+            <!-- Раскрывашка 3 -->
+            <div class="coral-toggle js-toggle">
+                <div class="coral-toggle__header js-toggle-header">
+                    <h3 class="title-5">Нужна ли виза?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <div class="coral-toggle__body js-toggle-body">
+                    <p class="text"> Нет, для поездок в Турцию до 60 дней гражданам Российской Федерации виза не нужна. </p>
+                </div>
+            </div>
+
+            <!-- Раскрывашка 4 -->
+            <div class="coral-toggle js-toggle">
+                <div class="coral-toggle__header js-toggle-header">
+                    <h3 class="title-5">Что входит в состав тура?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <div class="coral-toggle__body js-toggle-body">
+                    <p class="text"> В готовый пакетный тур в Стамбул входят авиаперелет, трансфер от аэропорта до отеля и обратно, проживание в отеле, питание выбранной концепции (чаще — завтраки), страховка и круглосуточная поддержка туроператора. </p>
+                </div>
+            </div>
+
+            <!-- Раскрывашка 5 -->
+            <div class="coral-toggle js-toggle">
+                <div class="coral-toggle__header js-toggle-header">
+                    <h3 class="title-5">Можно ли улететь в ближайшие даты?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <div class="coral-toggle__body js-toggle-body">
+                    <p class="text"> Да, если выбрать горящий тур в Стамбул. </p>
+                </div>
+            </div>
+
+            <!-- Раскрывашка 6 -->
+            <div class="coral-toggle js-toggle">
+                <div class="coral-toggle__header js-toggle-header">
+                    <h3 class="title-5">Как добраться из аэропорта до отеля?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <div class="coral-toggle__body js-toggle-body">
+                    <p class="text"> В состав тура входит трансфер до отеля. </p>
                 </div>
             </div>
         </div>
