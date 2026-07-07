@@ -23,7 +23,7 @@ window.imgFallback = function (img) {
   else { img.onerror = null; img.style.visibility = 'hidden'; }
 };
 
-let INSTR_IMAGES = {};  
+let INSTR_IMAGES = {};   
 let DESCRIPTIONS = {};   
 
 /* рендер инструкции (те же маркеры, что в сборщике) */
@@ -212,12 +212,29 @@ function wire() {
   if (fab) fab.addEventListener('click', openNav);
   if (navClose) navClose.addEventListener('click', closeNav);
   if (backdrop) backdrop.addEventListener('click', closeNav);
+  /* Надёжный переход к блоку: мгновенный прыжок + «доводка», пока позиция не
+     стабилизируется — иначе ленивые картинки, догружаясь, сдвигают цель и получается недокрут. */
+  function goToBlock(el) {
+    let last = null, stable = 0, tries = 0;
+    const tick = () => {
+      el.scrollIntoView({ block: 'start', behavior: 'auto' });
+      const top = Math.round(el.getBoundingClientRect().top);
+      if (top === last) { if (++stable >= 2) return; } else { stable = 0; last = top; }
+      if (++tries < 24) setTimeout(tick, 55);
+    };
+    tick();
+  }
   navlinks.forEach((a) => a.addEventListener('click', (e) => {
+    const el = document.getElementById(a.dataset.target);
+    if (!el) return;
+    e.preventDefault();
     if (isPhone()) {
-      e.preventDefault();
-      const el = document.getElementById(a.dataset.target);
-      if (el) el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    } else {
+      goToBlock(el);
     }
+    navlinks.forEach((x) => x.classList.remove('active'));
+    a.classList.add('active');
     if (isMobile()) closeNav();
   }));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
