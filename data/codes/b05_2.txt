@@ -43,6 +43,8 @@
 
         <div class="wrapper">
             <div class="grid-auto grid-auto--4">
+
+                <!-- Карточка -->
                 <div class="reason-card">
                     <div class="reason-card__img" style="background-image: url(https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2497542823_1.webp);">
                     </div>
@@ -51,6 +53,8 @@
                         <p class="text"> Вид открывается просто фантастический. К тому же во время поездки вы можете увидеть, как в море резвятся стайки дельфинов. </p>
                     </div>
                 </div>
+
+                <!-- Карточка -->
                 <div class="reason-card">
                     <div class="reason-card__img" style="background-image: url(https://b2ccdn.coral.ru/content/img/turkey/frame_9.webp);">
                     </div>
@@ -59,6 +63,8 @@
                         <p class="text"> Острова разительно отличаются от Стамбула — до начала ХХ века тут проживали греческие и армянские диаспоры. Поэтому архитектура и атмосфера будут совершенно иными. </p>
                     </div>
                 </div>
+
+                <!-- Карточка -->
                 <div class="reason-card">
                     <div class="reason-card__img" style="background-image: url(https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2660150561_1.webp);">
                     </div>
@@ -67,6 +73,8 @@
                         <p class="text"> На островах запрещены автомобили (только служебные машины, которые встречаются редко). Здесь передвигаются на велосипедах, электрокарах. </p>
                     </div>
                 </div>
+
+                <!-- Карточка -->
                 <div class="reason-card">
                     <div class="reason-card__img" style="background-image: url(https://b2ccdn.coral.ru/content/img/turkey/shutterstock_1283039482_1.webp);">
                     </div>

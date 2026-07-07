@@ -4,7 +4,7 @@
             <h2 class="title-1 mb-24"> Ответы на популярные вопросы </h2>
             <p class="text mb-24"> Отвечаем на вопросы, которые чаще всего задают путешественники. </p>
 
-            <!-- Раскрывашка 1 -->
+            <!-- Раскрывашка -->
             <div class="coral-toggle js-toggle">
                 <div class="coral-toggle__header js-toggle-header">
                     <h3 class="title-5">Можно ли купаться в море зимой (в январе–феврале)?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <!-- Раскрывашка 2 -->
+            <!-- Раскрывашка -->
             <div class="coral-toggle js-toggle">
                 <div class="coral-toggle__header js-toggle-header">
                     <h3 class="title-5">Как правильно спланировать свой день на отдыхе?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <!-- Раскрывашка 3 -->
+            <!-- Раскрывашка -->
             <div class="coral-toggle js-toggle">
                 <div class="coral-toggle__header js-toggle-header">
                     <h3 class="title-5">Нужна ли виза?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <!-- Раскрывашка 4 -->
+            <!-- Раскрывашка -->
             <div class="coral-toggle js-toggle">
                 <div class="coral-toggle__header js-toggle-header">
                     <h3 class="title-5">Что входит в состав тура?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <!-- Раскрывашка 5 -->
+            <!-- Раскрывашка -->
             <div class="coral-toggle js-toggle">
                 <div class="coral-toggle__header js-toggle-header">
                     <h3 class="title-5">Можно ли улететь в ближайшие даты?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <!-- Раскрывашка 6 -->
+            <!-- Раскрывашка -->
             <div class="coral-toggle js-toggle">
                 <div class="coral-toggle__header js-toggle-header">
                     <h3 class="title-5">Как добраться из аэропорта до отеля?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">

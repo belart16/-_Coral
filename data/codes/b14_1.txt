@@ -98,6 +98,8 @@
             <div class="slider-block" data-per-view="4">
                 <div class="swiper slider">
                     <div class="swiper-wrapper">
+
+                        <!-- Карточка -->
                         <div class="swiper-slide slider__slide">
                             <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2059822544_1.webp">
                             <div class="slider__info">
@@ -105,6 +107,8 @@
                                 <p class="text"> Этот вариант подходит для тех, кто не мыслит отпуск без вечерних променадов по набережной и хочет совмещать пляж с экскурсиями. Отели в самом Сиде находятся в шаговой доступности от знаменитого амфитеатра и музея под открытым небом. </p>
                             </div>
                         </div>
+
+                        <!-- Карточка -->
                         <div class="swiper-slide slider__slide">
                             <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2326138831_2_1.webp">
                             <div class="slider__info">
@@ -112,6 +116,8 @@
                                 <p class="text"> Если вы ищете классический отпуск в Турции с широкой песчаной полосой и пологим входом в море, вам сюда. Чолаклы – это бесконечная череда отелей, выстроившихся вдоль побережья. Здесь сконцентрированы самые популярные отели Сиде с большими зелеными территориями. </p>
                             </div>
                         </div>
+
+                        <!-- Карточка -->
                         <div class="swiper-slide slider__slide">
                             <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2062061696_1.webp">
                             <div class="slider__info">
@@ -119,6 +125,8 @@
                                 <p class="text"> Небольшой поселок рядом с Чолаклы. Здесь спокойнее, меньше ветра и намного тише. Отели в Кумкее часто выбирают те, кто едет с совсем маленькими детьми или ценит уединение. Пляжи здесь такие же отличные, песчаные, но сам поселок менее загружен туристами. </p>
                             </div>
                         </div>
+
+                        <!-- Карточка -->
                         <div class="swiper-slide slider__slide">
                             <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2264843483_1.webp">
                             <div class="slider__info">
@@ -126,6 +134,8 @@
                                 <p class="text"> Часто в поиске туров в Сиде вам будут предлагать отели в этих локациях. Это отдаленные районы, где строят огромные отельные комплексы. Плюсы: большие территории, где можно гулять часами, собственные аквапарки и зоопарки, концепция ультра «все включено» 24/7. </p>
                             </div>
                         </div>
+
+                        <!-- Карточка -->
                         <div class="swiper-slide slider__slide">
                             <img class="slider__img" src="https://b2ccdn.coral.ru/content/img/turkey/shutterstock_2326138831_2_1.webp">
                             <div class="slider__info">

@@ -44,18 +44,24 @@
             <h2 class="title-1 mb-24"> Заголовок секции </h2>
             <p class="text mb-24"> Нужна ли виза в Египет для россиян — вот три варианта: </p>
             <div class="price-cards grid-auto grid-auto--3">
+
+                <!-- Карточка -->
                 <div class="price-card">
                     <div class="price-card__badge"> По прибытию </div>
                     <p class="price-card__price"> 30 $ </p>
                     <p class="price-card__title"> Виза по прибытию </p>
                     <p class="text"> Берут прямо в аэропорту, у специальных стоек, ещё до паспортного контроля. С 1 марта 2026 года стоит 30 долларов. Действует 30 дней. Нужна для Хургады, Каира и всех городов за пределами Синайского полуострова. </p>
                 </div>
+
+                <!-- Карточка -->
                 <div class="price-card">
                     <div class="price-card__badge"> Бесплатно </div>
                     <p class="price-card__price"> 0 $ </p>
                     <p class="price-card__title"> Синайский штамп </p>
                     <p class="text"> Бесплатный, ставится по прилёте в аэропорту Шарм-эш-Шейха. Действует до 15 суток, но только в пределах курортной зоны Южного Синая: Шарм, Дахаб, Нувейба, Таба. Захотите съездить в Каир — понадобится полноценная виза за 30 $. </p>
                 </div>
+
+                <!-- Карточка -->
                 <div class="price-card">
                     <div class="price-card__badge"> Онлайн </div>
                     <p class="price-card__price"> 25 $ </p>

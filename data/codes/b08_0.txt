@@ -21,14 +21,20 @@
             <h2 class="title-1 mb-24"> Заголовок секции </h2>
             <!--p class="text mb-24"> Текст </p-->
             <div class="grid-auto grid-auto--3">
+
+                <!-- Плашка -->
                 <div class="accent-card">
                     <p class="accent-card__title"> Заголовок карточки </p>
                     <p class="text"> Текст карточки. </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="accent-card">
                     <p class="accent-card__title"> Заголовок карточки </p>
                     <p class="text"> Текст карточки. </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="accent-card">
                     <p class="accent-card__title"> Заголовок карточки </p>
                     <p class="text"> Текст карточки. </p>

@@ -45,26 +45,36 @@
         <div class="wrapper">
             <!--p class="text mb-24"> Текст </p-->
             <div class="grid-auto grid-auto--5">
+
+                <!-- Плашка -->
                 <div class="choose-card">
                     <div class="choose-card__num"> 1 </div>
                     <p class="choose-card__title"> Заголовок </p>
                     <p class="text"> Первая линия или тишина в глубине курорта, активная анимация или спокойный релакс. </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="choose-card">
                     <div class="choose-card__num"> 2 </div>
                     <p class="choose-card__title"> Заголовок </p>
                     <p class="text"> Изучайте отзывы за последние 3–6 месяцев – актуальная информация о сервисе важнее общих оценок. </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="choose-card">
                     <div class="choose-card__num"> 3 </div>
                     <p class="choose-card__title"> Заголовок </p>
                     <p class="text"> Иногда сдвиг на 2–3 дня снижает стоимость тура на 15–20%. </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="choose-card">
                     <div class="choose-card__num"> 4 </div>
                     <p class="choose-card__title"> Заголовок </p>
                     <p class="text"> Для отдыха с детьми важны детский бассейн, меню и анимация; для пар – спа, ужины при свечах, приватность. </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="choose-card">
                     <div class="choose-card__num"> 5 </div>
                     <p class="choose-card__title"> Заголовок </p>

@@ -47,6 +47,8 @@
         <div class="wrapper">
             <!--p class="text mb-24"> Текст </p-->
             <div class="grid-auto grid-auto--6">
+
+                <!-- Плашка -->
                 <div class="feature-card">
                     <div class="feature-card__icon"> ✓ </div>
                     <div class="feature-card__body">
@@ -54,6 +56,8 @@
                         <p class="text"> Просторные номера с кондиционером, мини-баром, сейфом и балконом </p>
                     </div>
                 </div>
+
+                <!-- Плашка -->
                 <div class="feature-card">
                     <div class="feature-card__icon"> ✓ </div>
                     <div class="feature-card__body">
@@ -61,6 +65,8 @@
                         <p class="text"> Бесплатный Wi-Fi в общественных зонах и часто в номерах </p>
                     </div>
                 </div>
+
+                <!-- Плашка -->
                 <div class="feature-card">
                     <div class="feature-card__icon"> ✓ </div>
                     <div class="feature-card__body">
@@ -68,6 +74,8 @@
                         <p class="text"> Один или несколько бассейнов (открытый, детский, иногда с подогревом) </p>
                     </div>
                 </div>
+
+                <!-- Плашка -->
                 <div class="feature-card">
                     <div class="feature-card__icon"> ✓ </div>
                     <div class="feature-card__body">
@@ -75,6 +83,8 @@
                         <p class="text"> Питание по системе «всё включено» или «завтрак + ужин» </p>
                     </div>
                 </div>
+
+                <!-- Плашка -->
                 <div class="feature-card">
                     <div class="feature-card__icon"> ✓ </div>
                     <div class="feature-card__body">
@@ -82,6 +92,8 @@
                         <p class="text"> Собственный или муниципальный пляж с лежаками и зонтами </p>
                     </div>
                 </div>
+
+                <!-- Плашка -->
                 <div class="feature-card">
                     <div class="feature-card__icon"> ✓ </div>
                     <div class="feature-card__body">

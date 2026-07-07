@@ -48,6 +48,8 @@
 
         <div class="wrapper">
             <div class="point grid-auto grid-auto--5">
+
+                <!-- Плашка -->
                 <div class="point__block">
                     <div class="point__header">
                         <div class="point__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22" fill="none">
@@ -58,6 +60,8 @@
                     </div>
                     <p class="text"> Рынок, где торгуют пряными специями, сладостями и цветами. </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="point__block">
                     <div class="point__header">
                         <div class="point__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22" fill="none">
@@ -68,6 +72,8 @@
                     </div>
                     <p class="text"> Книжный базар, где можно найти антикварные изделия </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="point__block">
                     <div class="point__header">
                         <div class="point__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22" fill="none">
@@ -78,6 +84,8 @@
                     </div>
                     <p class="text"> Рынок, здание которого выполнено в Османском стиле, где можно окунуться в стародавние времена </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="point__block">
                     <div class="point__header">
                         <div class="point__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22" fill="none">
@@ -88,6 +96,8 @@
                     </div>
                     <p class="text"> Кроме того, можно посетить самый старый торговый центр «Атриум», молл Tepe Nautilus и попасть на распродажу в аутлет Deposite. </p>
                 </div>
+
+                <!-- Плашка -->
                 <div class="point__block">
                     <div class="point__header">
                         <div class="point__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22" fill="none">
