@@ -183,6 +183,9 @@ function wire() {
   const navlinks = [...document.querySelectorAll('.nav-link')];
   const grpHeads = [...document.querySelectorAll('.grp-head')];
   const empty = document.getElementById('empty');
+  const blocksRoot = document.getElementById('blocks-root');
+  const counter = document.getElementById('pager-counter');
+  const isPhone = () => window.matchMedia('(max-width:560px)').matches;
   search.addEventListener('input', () => {
     const q = search.value.trim().toLowerCase(); let any = false;
     blocks.forEach((b) => { const hit = !q || b.dataset.name.includes(q); b.classList.toggle('hide', !hit); if (hit) any = true; });
@@ -193,6 +196,7 @@ function wire() {
       h.classList.toggle('hide', !vis);
     });
     empty.classList.toggle('show', !any);
+    if (isPhone()) { blocksRoot.style.display = any ? '' : 'none'; blocksRoot.scrollLeft = 0; updatePager(); }
   });
 
   const byId = Object.fromEntries(navlinks.map((a) => [a.dataset.target, a]));
@@ -208,14 +212,46 @@ function wire() {
   if (fab) fab.addEventListener('click', openNav);
   if (navClose) navClose.addEventListener('click', closeNav);
   if (backdrop) backdrop.addEventListener('click', closeNav);
-  navlinks.forEach((a) => a.addEventListener('click', () => { if (isMobile()) closeNav(); }));
+  navlinks.forEach((a) => a.addEventListener('click', (e) => {
+    if (isPhone()) {
+      e.preventDefault();
+      const el = document.getElementById(a.dataset.target);
+      if (el) el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    }
+    if (isMobile()) closeNav();
+  }));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
-  window.addEventListener('resize', () => { if (!isMobile()) closeNav(); });
+  window.addEventListener('resize', () => { if (!isMobile()) closeNav(); if (!isPhone()) blocksRoot.style.display = ''; setupSpy(); });
 
-  const obs = new IntersectionObserver((ents) => {
-    ents.forEach((e) => { if (e.isIntersecting) { navlinks.forEach((a) => a.classList.remove('active')); const a = byId[e.target.id]; if (a) a.classList.add('active'); } });
-  }, { rootMargin: '-18% 0px -72% 0px', threshold: 0 });
-  blocks.forEach((b) => obs.observe(b));
+  /* scroll-spy: десктоп — IntersectionObserver (вертикаль); телефон — горизонтальный пейджер */
+  let io = null, rafPending = false;
+  function updatePager() {
+    if (!isPhone()) { if (counter) counter.textContent = ''; return; }
+    const vis = blocks.filter((b) => !b.classList.contains('hide'));
+    if (!vis.length) { if (counter) counter.textContent = ''; return; }
+    const w = blocksRoot.clientWidth || 1;
+    let idx = Math.round(blocksRoot.scrollLeft / w);
+    idx = Math.max(0, Math.min(idx, vis.length - 1));
+    navlinks.forEach((a) => a.classList.remove('active'));
+    const a = byId[vis[idx].id]; if (a) a.classList.add('active');
+    if (counter) counter.textContent = (idx + 1) + ' / ' + vis.length;
+  }
+  const onPagerScroll = () => { if (rafPending) return; rafPending = true; requestAnimationFrame(() => { rafPending = false; updatePager(); }); };
+  function setupSpy() {
+    if (io) { io.disconnect(); io = null; }
+    blocksRoot.removeEventListener('scroll', onPagerScroll);
+    if (isPhone()) {
+      blocksRoot.addEventListener('scroll', onPagerScroll, { passive: true });
+      updatePager();
+    } else {
+      navlinks.forEach((a) => a.classList.remove('active'));
+      io = new IntersectionObserver((ents) => {
+        ents.forEach((e) => { if (e.isIntersecting) { navlinks.forEach((a) => a.classList.remove('active')); const a = byId[e.target.id]; if (a) a.classList.add('active'); } });
+      }, { rootMargin: '-18% 0px -72% 0px', threshold: 0 });
+      blocks.forEach((b) => io.observe(b));
+    }
+  }
+  setupSpy();
 }
 
 /* старт */
