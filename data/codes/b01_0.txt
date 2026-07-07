@@ -133,6 +133,7 @@
             <div class="banner">
                 <div class="banner__content">
                     <h1 class="banner__title"> 7 причин провести день <br>на Принцевых островах — <br>в дачном пригороде<br> Стамбула </h1>
+                    <!--p class="banner__subtitle"> Подзаголовок </p-->
                     <a href="#hotels" class="banner__button"> Выбрать тур </a>
                 </div>
             </div>
