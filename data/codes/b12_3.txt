@@ -1,3 +1,104 @@
+<style>
+    .panel {
+        background-color: #fff;
+        border-radius: 20px;
+        min-height: 60px;
+        display: flex
+    }
+
+    .panel + .panel {
+        margin-top: 24px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .panel {
+            flex-direction: column
+        }
+    }
+
+    .panel__col {
+        flex: 1;
+        align-items: center;
+        display: flex
+    }
+
+    @media screen and (max-width: 1024px) {
+        .panel__col {
+            order: 2
+        }
+    }
+
+    .panel__info {
+        padding: 28px 24px
+    }
+
+    .panel__img {
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 0 20px 20px 0;
+        flex: 1;
+        display: flex;
+        position: relative
+    }
+
+    @media screen and (max-width: 1024px) {
+        .panel__img {
+            border-radius: 20px 20px 0 0;
+            order: 1;
+            min-height: 280px
+        }
+    }
+
+    .panel--reverse {
+        flex-direction: row-reverse
+    }
+
+    @media screen and (max-width: 1024px) {
+        .panel--reverse {
+            flex-direction: column
+        }
+    }
+
+    .panel--reverse .panel__img {
+        border-radius: 20px 0 0 20px
+    }
+
+    @media screen and (max-width: 1024px) {
+        .panel--reverse .panel__img {
+            border-radius: 20px 20px 0 0
+        }
+    }
+
+    .panel__buttons {
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 24px;
+        display: flex
+    }
+
+    .panel__label {
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: 16px;
+        align-items: center;
+        gap: 8px;
+        height: 40px;
+        padding-left: 12px;
+        padding-right: 12px;
+        display: flex;
+        position: absolute;
+        top: 16px;
+        right: 16px
+    }
+
+    @media screen and (max-width: 1024px) {
+        .panel__label {
+            right: unset;
+            left: 16px
+        }
+    }
+</style>
+
 <section class="coral">
     <article>
         <div class="wrapper mt-1">

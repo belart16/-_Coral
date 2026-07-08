@@ -282,6 +282,10 @@
         display: flex
     }
     
+    .panel + .panel {
+        margin-top: 24px;
+    }
+    
     @media screen and (max-width: 1024px) {
         .panel {
             flex-direction: column
