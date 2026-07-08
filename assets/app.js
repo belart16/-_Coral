@@ -212,8 +212,7 @@ function wire() {
   if (fab) fab.addEventListener('click', openNav);
   if (navClose) navClose.addEventListener('click', closeNav);
   if (backdrop) backdrop.addEventListener('click', closeNav);
-  /* Надёжный переход к блоку: мгновенный прыжок + «доводка», пока позиция не
-     стабилизируется — иначе ленивые картинки, догружаясь, сдвигают цель и получается недокрут. */
+
   function goToBlock(el) {
     let last = null, stable = 0, tries = 0;
     const tick = () => {
