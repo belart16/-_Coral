@@ -92,7 +92,7 @@
     hostReactAppReady().then(() => {
         const toggles = document.querySelectorAll(".js-toggle");
         toggles.forEach(toggle => {
-            if (toggle.dataset.toggleBound) return; // уже привязан — пропускаем
+            if (toggle.dataset.toggleBound) return;
             toggle.dataset.toggleBound = "1";
             const header = toggle.querySelector(".js-toggle-header");
             const body = toggle.querySelector(".js-toggle-body");
