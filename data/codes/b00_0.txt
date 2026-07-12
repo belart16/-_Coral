@@ -27,7 +27,6 @@
         margin-top: 8px
     }
     
-    
     .mt-1 {
         margin-top: 40px
     }    
