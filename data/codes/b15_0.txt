@@ -1,79 +1,171 @@
+<style>
+    .coral-toggle {
+        background-color: #fff;
+        border-radius: 20px;
+        flex-direction: column;
+        height: max-content;
+        display: flex;
+        margin-bottom: 16px
+    }
+    
+    .coral-toggle + .coral-toggle {
+        margin-top: 16px;
+    }
+    
+    .coral-toggle__header {
+        cursor: pointer;
+        justify-content: space-between;
+        align-items: center;
+        padding: 32px;
+        display: flex
+    }
+    
+    .coral-toggle__header p {
+        color: inherit;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px
+    }
+    
+    .coral-toggle__header svg {
+        flex-shrink: 0;
+        margin-left: 8px;
+        transition: transform .3s
+    }
+    
+    .coral-toggle__body {
+        max-height: 0;
+        margin-left: 32px;
+        margin-right: 32px;
+        list-style: none;
+        transition: max-height .3s;
+        overflow: hidden
+    }
+    
+    .coral-toggle__body li + li {
+        margin-top: 8px
+    }
+    
+    .coral-toggle.active .coral-toggle__header svg {
+        transform: rotate(180deg)
+    }
+    
+    .coral-toggle.active .coral-toggle__body {
+        margin-bottom: 32px
+    }
+</style>
+
 <section class="coral">
     <article>
         <div class="wrapper mt-1">
-            <h2 class="title-1 mb-24"> Ответы на популярные вопросы </h2>
-            <p class="text mb-24"> Отвечаем на вопросы, которые чаще всего задают путешественники. </p>
+            <h2 class="title-2 mb-16">
+                Часто задаваемые вопросы
+            </h2>
 
-            <!-- Раскрывашка -->
-            <div class="coral-toggle js-toggle">
-                <div class="coral-toggle__header js-toggle-header">
-                    <h3 class="title-5">Можно ли купаться в море зимой (в январе–феврале)?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
-                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                </div>
-                <div class="coral-toggle__body js-toggle-body">
-                    <p class="text"> Да, купаться можно, но вода по местным меркам прохладная — около +21 °C. </p>
-                </div>
-            </div>
+            <div itemscope="" itemtype="http://schema.org/FAQPage">
 
-            <!-- Раскрывашка -->
-            <div class="coral-toggle js-toggle">
-                <div class="coral-toggle__header js-toggle-header">
-                    <h3 class="title-5">Как правильно спланировать свой день на отдыхе?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
-                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
+                <!-- Раскрывашка -->
+                <div itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Question">
+                    <div class="coral-toggle js-toggle">
+                        <div class="coral-toggle__header js-toggle-header">
+                            <h3 class="title-5" itemprop="name">Можно ли купаться в море зимой (в январе–феврале)?</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="coral-toggle__body js-toggle-body">
+                            <p class="text" itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+                                <span itemprop="text">Да, купаться можно, но вода по местным меркам прохладная — около +21 °C.</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="coral-toggle__body js-toggle-body">
-                    <p class="text"> В жарком климате все активности лучше планировать на утро и вечер, а днем устраивать для себя комфортную сиесту у бассейна, в океанариуме или номере отеля. В зимнее время можно больше уделять внимание прогулкам, экскурсиям и изучению самих городов, а в бархатный сезон — купанию. </p>
-                </div>
-            </div>
 
-            <!-- Раскрывашка -->
-            <div class="coral-toggle js-toggle">
-                <div class="coral-toggle__header js-toggle-header">
-                    <h3 class="title-5">Нужна ли виза?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
-                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
+                <!-- Раскрывашка -->
+                <div itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Question">
+                    <div class="coral-toggle js-toggle">
+                        <div class="coral-toggle__header js-toggle-header">
+                            <h3 class="title-5" itemprop="name">Как правильно спланировать свой день на отдыхе?</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="coral-toggle__body js-toggle-body">
+                            <p class="text" itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+                                <span itemprop="text">В жарком климате все активности лучше планировать на утро и вечер, а днем устраивать для себя комфортную сиесту у бассейна, в океанариуме или номере отеля. В зимнее время можно больше уделять внимание прогулкам, экскурсиям и изучению самих городов, а в бархатный сезон — купанию.</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="coral-toggle__body js-toggle-body">
-                    <p class="text"> Нет, для поездок в Турцию до 60 дней гражданам Российской Федерации виза не нужна. </p>
-                </div>
-            </div>
 
-            <!-- Раскрывашка -->
-            <div class="coral-toggle js-toggle">
-                <div class="coral-toggle__header js-toggle-header">
-                    <h3 class="title-5">Что входит в состав тура?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
-                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
+                <!-- Раскрывашка -->
+                <div itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Question">
+                    <div class="coral-toggle js-toggle">
+                        <div class="coral-toggle__header js-toggle-header">
+                            <h3 class="title-5" itemprop="name">Нужна ли виза?</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="coral-toggle__body js-toggle-body">
+                            <p class="text" itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+                                <span itemprop="text">Нет, для поездок в Турцию до 60 дней гражданам Российской Федерации виза не нужна.</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="coral-toggle__body js-toggle-body">
-                    <p class="text"> В готовый пакетный тур в Стамбул входят авиаперелет, трансфер от аэропорта до отеля и обратно, проживание в отеле, питание выбранной концепции (чаще — завтраки), страховка и круглосуточная поддержка туроператора. </p>
-                </div>
-            </div>
 
-            <!-- Раскрывашка -->
-            <div class="coral-toggle js-toggle">
-                <div class="coral-toggle__header js-toggle-header">
-                    <h3 class="title-5">Можно ли улететь в ближайшие даты?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
-                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
+                <!-- Раскрывашка -->
+                <div itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Question">
+                    <div class="coral-toggle js-toggle">
+                        <div class="coral-toggle__header js-toggle-header">
+                            <h3 class="title-5" itemprop="name">Что входит в состав тура?</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="coral-toggle__body js-toggle-body">
+                            <p class="text" itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+                                <span itemprop="text">В готовый пакетный тур в Стамбул входят авиаперелет, трансфер от аэропорта до отеля и обратно, проживание в отеле, питание выбранной концепции (чаще — завтраки), страховка и круглосуточная поддержка туроператора.</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="coral-toggle__body js-toggle-body">
-                    <p class="text"> Да, если выбрать горящий тур в Стамбул. </p>
-                </div>
-            </div>
 
-            <!-- Раскрывашка -->
-            <div class="coral-toggle js-toggle">
-                <div class="coral-toggle__header js-toggle-header">
-                    <h3 class="title-5">Как добраться из аэропорта до отеля?</h3> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
-                        <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
+                <!-- Раскрывашка -->
+                <div itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Question">
+                    <div class="coral-toggle js-toggle">
+                        <div class="coral-toggle__header js-toggle-header">
+                            <h3 class="title-5" itemprop="name">Можно ли улететь в ближайшие даты?</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="coral-toggle__body js-toggle-body">
+                            <p class="text" itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+                                <span itemprop="text">Да, если выбрать горящий тур в Стамбул.</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="coral-toggle__body js-toggle-body">
-                    <p class="text"> В состав тура входит трансфер до отеля. </p>
+
+                <!-- Раскрывашка -->
+                <div itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Question">
+                    <div class="coral-toggle js-toggle">
+                        <div class="coral-toggle__header js-toggle-header">
+                            <h3 class="title-5" itemprop="name">Как добраться из аэропорта до отеля?</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                                <path d="M1 1L6 6L11 1" stroke="#0E2855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="coral-toggle__body js-toggle-body">
+                            <p class="text" itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+                                <span itemprop="text">В состав тура входит трансфер до отеля.</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </article>
