@@ -303,49 +303,5 @@
     }
     
     .wrapper > .grid-auto:first-child { margin-top: 0; }
-    
-    /* Аккордеон (coral-toggle) */
-    
-    .coral-toggle {
-        background-color: #fff;
-        border-radius: 20px;
-        flex-direction: column;
-        height: max-content;
-        display: flex;
-    }
-    .coral-toggle + .coral-toggle {
-        margin-top: 16px;
-    }
-    
-    .coral-toggle__header {
-        cursor: pointer;
-        justify-content: space-between;
-        align-items: center;
-        padding: 32px;
-        display: flex;
-    }
-    
-    .coral-toggle__header svg {
-        flex-shrink: 0;
-        margin-left: 8px;
-        transition: transform .3s;
-    }
-    .coral-toggle__body {
-        max-height: 0;
-        margin-left: 32px;
-        margin-right: 32px;
-        list-style: none;
-        transition: max-height .3s;
-        overflow: hidden;
-    }
-    .coral-toggle__body li + li {
-        margin-top: 8px;
-    }
-    .coral-toggle.active .coral-toggle__header svg {
-        transform: rotate(180deg);
-    }
-    .coral-toggle.active .coral-toggle__body {
-        margin-bottom: 32px;
-    }
-    
+   
 </style>

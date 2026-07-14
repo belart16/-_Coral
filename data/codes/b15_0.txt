@@ -5,60 +5,53 @@
         flex-direction: column;
         height: max-content;
         display: flex;
-        margin-bottom: 16px
+        margin-bottom: 16px;
     }
-    
+
     .coral-toggle + .coral-toggle {
         margin-top: 16px;
     }
-    
+
     .coral-toggle__header {
         cursor: pointer;
         justify-content: space-between;
         align-items: center;
         padding: 32px;
-        display: flex
+        display: flex;
     }
-    
-    .coral-toggle__header p {
-        color: inherit;
-        font-size: 20px;
-        font-weight: 600;
-        line-height: 28px
-    }
-    
+
     .coral-toggle__header svg {
         flex-shrink: 0;
         margin-left: 8px;
-        transition: transform .3s
+        transition: transform .3s;
     }
-    
+
     .coral-toggle__body {
         max-height: 0;
         margin-left: 32px;
         margin-right: 32px;
         list-style: none;
         transition: max-height .3s;
-        overflow: hidden
+        overflow: hidden;
     }
-    
+
     .coral-toggle__body li + li {
-        margin-top: 8px
+        margin-top: 8px;
     }
-    
+
     .coral-toggle.active .coral-toggle__header svg {
-        transform: rotate(180deg)
+        transform: rotate(180deg);
     }
-    
+
     .coral-toggle.active .coral-toggle__body {
-        margin-bottom: 32px
+        margin-bottom: 32px;
     }
 </style>
 
 <section class="coral">
     <article>
         <div class="wrapper mt-1">
-            <h2 class="title-2 mb-16">
+            <h2 class="title-1 mb-24">
                 Часто задаваемые вопросы
             </h2>
 
