@@ -96,6 +96,13 @@
 
             function onScroll() {
                 const scrollY = window.scrollY;
+                if (window.matchMedia('(max-width: 768px)').matches) {
+                    if (anchors.classList.contains('anchors--fixed')) {
+                        anchors.classList.remove('anchors--fixed');
+                        placeholder.style.display = 'none';
+                    }
+                    return;
+                }
                 if (hotelsNav()) {
                     if (anchors.classList.contains('anchors--fixed')) {
                         anchors.classList.remove('anchors--fixed');
@@ -118,6 +125,7 @@
             }
             window.addEventListener('scroll', onScroll);
             window.addEventListener('resize', () => {
+                onScroll();
                 if (anchors.classList.contains('anchors--fixed')) {
                     placeholder.style.height = `${anchors.offsetHeight}px`;
                 }
