@@ -792,7 +792,7 @@
     return '<div class="' + cls + '">' + head + '<pre class="cb-code"><code>' + esc(p.code) + '</code></pre></div>';
   }
   function exportHtml(editable) {
-    if (!state.blocks.length) return '<div class="cb-export-empty">Код появится после добавления блоков.</div>';
+    if (!state.blocks.length) return '<div class="cb-export-empty">Код появится после добавления блоков</div>';
     var hint = '<div class="cb-code-hint">Код можно править вручную — правки сохранятся, пока вы не измените поля этого блока.</div>';
     var ps = pieces();
     return hint + blockGroups().map(function (g) {
@@ -1532,6 +1532,7 @@
       '.cb-pane{border:1px solid #e6ebf0;border-radius:14px;overflow:hidden;background:#fff}.cb-hidden{display:none}' +
       '#dw-preview{width:100%;height:calc(100vh - 78px);border:0;background:#f5f5f8}' +
       '#dw-export{padding:14px}' +
+      '#dw-export:has(.cb-export-empty){padding:0}.cb-export-empty{display:flex;align-items:center;justify-content:center;height:calc(100vh - 78px);background:#f5f5f8;color:#6b7785;font:500 15px Manrope,system-ui,sans-serif;text-align:center}' + // пусто — как «Добавьте блок из меню слева» в превью
       '.cb-code-hint{font:500 12px Manrope,sans-serif;color:#0B3C5D;background:#E5F7FF;border:1px solid #d4ecf7;border-radius:10px;padding:8px 12px;margin-bottom:12px}' +
       '.cb-piece{margin-bottom:12px}.cb-piece-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.cb-piece-head span{font:600 12.5px Manrope,sans-serif;color:#111}' +
       '.cb-copy{padding:6px 14px;border:1.5px solid #0092D0;background:#fff;color:#0092D0;border-radius:999px;cursor:pointer;font:600 12.5px Manrope,sans-serif}' +
