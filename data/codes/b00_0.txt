@@ -1,307 +1,418 @@
 <style>
-    .mb-24 {
-        margin-bottom: 24px
-    }
-    
-    .mb-16 {
-        margin-bottom: 16px
-    }
-    
-    .mb-8 {
-        margin-bottom: 8px
-    }
-    
-    .mb-4 {
-        margin-bottom: 4px
-    }
-    
-    .mt-24 {
-        margin-top: 24px;
-    }
-    
-    .mt-16 {
-        margin-top: 16px
-    }
-    
-    .mt-8 {
-        margin-top: 8px
-    }
-    
-    .mt-1 {
-        margin-top: 40px
-    }    
-    
-    * {
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        margin: 0;
-        padding: 0
-    }
-    
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    a {
-        margin: 0;
-        padding: 0
-    }
-    
-    .coral .banner+.text {
-        margin-top: 14px
-    }
-    
+.mb-24 {
+    margin-bottom: 24px
+}
+ 
+.mb-16 {
+    margin-bottom: 16px
+}
+ 
+.mb-8 {
+    margin-bottom: 8px
+}
+ 
+.mb-4 {
+    margin-bottom: 4px
+}
+ 
+.mt-24 {
+  margin-top: 24px;
+}
+ 
+.mt-16 {
+    margin-top: 16px
+}
+ 
+.mt-8 {
+    margin-top: 8px
+}
+ 
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0
+}
+ 
+h1, h2, h3, h4, h5, h6, p, a {
+    margin: 0;
+    padding: 0
+}
+ 
+.coral .banner + .text {
+    margin-top: 14px
+}
+ 
+.coral .title-1 {
+    font-size: 36px;
+    line-height: 44px
+}
+ 
+@media screen and (max-width: 768px) {
     .coral .title-1 {
-        font-size: 36px;
-        line-height: 44px
-    }
-    
-    @media screen and (max-width: 768px) {
-        .coral .title-1 {
-            font-size: 28px;
-            line-height: 36px
-        }
-    }
-    
-    .coral .title-2 {
-        font-size: 32px;
-        line-height: 40px
-    }
-    
-    @media screen and (max-width: 1024px) {
-        .coral .title-2 {
-            font-size: 28px;
-            line-height: 36px
-        }
-    }
-    
-    .coral .title-3 {
         font-size: 28px;
-        font-weight: 600;
         line-height: 36px
     }
-    
-    @media screen and (max-width: 768px) {
-        .coral .title-3 {
-            font-size: 20px;
-            line-height: 28px
-        }
+}
+ 
+.coral .title-2 {
+    font-size: 32px;
+    line-height: 40px
+}
+ 
+@media screen and (max-width: 1024px) {
+    .coral .title-2 {
+        font-size: 28px;
+        line-height: 36px
     }
-    
-    .coral .title-4 {
-        font-size: 24px;
-        font-weight: 600;
-        line-height: 32px
-    }
-    
-    @media screen and (max-width: 768px) {
-        .coral .title-4 {
-            font-size: 20px;
-            line-height: 28px
-        }
-    }
-    
-    .coral .title-5 {
+}
+ 
+.coral .title-3 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px
+}
+ 
+@media screen and (max-width: 768px) {
+    .coral .title-3 {
         font-size: 20px;
-        font-weight: 600;
         line-height: 28px
     }
-    
-    .coral .label {
-        color: rgba(0, 0, 0, .65);
-        font-size: 12px;
-        line-height: 20px
+}
+ 
+.coral .title-4 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px
+}
+ 
+@media screen and (max-width: 768px) {
+    .coral .title-4 {
+        font-size: 20px;
+        line-height: 28px
     }
-    
-    .text {
-        font-size: 16px;
-        line-height: 24px
+}
+ 
+.coral .title-5 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px
+}
+ 
+.coral .label {
+    color: rgba(0, 0, 0, .65);
+    font-size: 12px;
+    line-height: 20px
+}
+ 
+.text {
+    font-size: 16px;
+    line-height: 24px
+}
+ 
+a.coral-button {
+    color: #fff;
+    background-color: #0092d0;
+    border-radius: 48px;
+    align-items: center;
+    width: fit-content;
+    height: 48px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    text-decoration: none;
+    display: flex
+}
+ 
+a.coral-button--white {
+    color: inherit;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, .15)
+}
+ 
+a.coral-button--white:hover {
+    color: #077dad;
+    background-color: transparent;
+    border: 1px solid #077dad
+}
+ 
+.bg-white {
+    background-color: #fff
+}
+ 
+.bg-grey {
+    background-color: #f5f5f8
+}
+ 
+.slider.swiper:not(:has(.swiper-pagination-lock)) {
+    padding-bottom: 24px
+}
+ 
+.slider__pagination.swiper-pagination.swiper-pagination-horizontal {
+    bottom: 0
+}
+ 
+.slider__pagination.swiper-pagination .swiper-pagination-bullet {
+    opacity: 1;
+    background-color: rgba(51, 194, 255, .3);
+    width: 10px;
+    height: 10px
+}
+ 
+.slider__pagination.swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: #077dad
+}
+ 
+.layout-container-limit:has(section.coral) {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important
+}
+ 
+.layout-container-limit:has(section.sunamr) {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important
+}
+ 
+section > article {
+    max-width: 1528px;
+    margin: auto
+}
+ 
+section > article .wrapper {
+    padding: 40px 80px;
+    position: relative
+}
+ 
+@media screen and (max-width: 768px) {
+    section > article .wrapper {
+        padding: 30px 16px
     }
-    
-    a.coral-button {
-        color: #fff;
-        background-color: #0092d0;
-        border-radius: 48px;
-        align-items: center;
-        width: fit-content;
-        height: 48px;
-        padding-left: 20px;
-        padding-right: 20px;
-        font-size: 16px;
-        text-decoration: none;
-        display: flex
-    }
-    
-    a.coral-button--white {
-        color: inherit;
-        background-color: transparent;
-        border: 1px solid rgba(0, 0, 0, .15)
-    }
-    
-    a.coral-button--white:hover {
-        color: #077dad;
-        background-color: transparent;
-        border: 1px solid #077dad
-    }
-    
-    .bg-white {
-        background-color: #fff
-    }
-    
-    .bg-grey {
-        background-color: #f5f5f8
-    }
-    
-    .slider.swiper:not(:has(.swiper-pagination-lock)) {
-        padding-bottom: 24px
-    }
-    
-    .slider__pagination.swiper-pagination.swiper-pagination-horizontal {
-        bottom: 0
-    }
-    
-    .slider__pagination.swiper-pagination .swiper-pagination-bullet {
-        opacity: 1;
-        background-color: rgba(51, 194, 255, .3);
-        width: 10px;
-        height: 10px
-    }
-    
-    .slider__pagination.swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
-        background-color: #077dad
-    }
-    
-    .layout-container-limit:has(section.coral) {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 !important
-    }
-    
-    .layout-container-limit:has(section.sunmar) {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 !important
-    }
-    
-    section>article {
-        max-width: 1528px;
-        margin: auto
-    }
-    
-    section>article .wrapper {
-        padding: 12px 80px;
-        position: relative
-    }
-    
-    @media screen and (max-width: 768px) {
-        section>article .wrapper {
-            padding: 30px 16px
-        }
-    }
-    
-    section.full-width>article {
-        max-width: 100%
-    }
-    
-    section.full-width>article .wrapper {
+}
+ 
+section.full-width > article {
+    max-width: 100%
+}
+ 
+section.full-width > article .wrapper {
+    padding-left: 0;
+    padding-right: 0
+}
+ 
+@media screen and (max-width: 428px) {
+    section.full-width-428 > article .wrapper {
         padding-left: 0;
         padding-right: 0
     }
-    
-    @media screen and (max-width: 428px) {
-        section.full-width-428>article .wrapper {
-            padding-left: 0;
-            padding-right: 0
-        }
-    }
-    
-    section:has(.banner) .wrapper {
-        padding-bottom: 0
-    }
-    
-    section:has(.banner.banner--text) .wrapper {
-        padding-bottom: 40px
-    }
-    
-    .ant-col:has(section.coral)>div {
-        padding: 0
-    }
-    
+}
+ 
+section:has(.banner) .wrapper {
+    padding-bottom: 0
+}
+ 
+section:has(.banner.banner--text) .wrapper {
+    padding-bottom: 40px
+}
+ 
+.ant-col:has(section.coral) > div {
+    padding: 0
+}
+ 
+.d-hidden {
+    display: none
+}
+ 
+@media screen and (max-width: 768px) {
     .d-hidden {
-        display: none
-    }
-    
-    @media screen and (max-width: 768px) {
-        .d-hidden {
-            display: block
-        }
-    }
-    
-    .m-hidden {
         display: block
     }
-    
-    @media screen and (max-width: 768px) {
-        .m-hidden {
-            display: none
-        }
+}
+ 
+.m-hidden {
+    display: block
+}
+ 
+@media screen and (max-width: 768px) {
+    .m-hidden {
+        display: none
     }
-    
-    .text-center {
-        text-align: center
+}
+ 
+.text-center {
+    text-align: center
+}
+ 
+.text + .text {
+    margin-top: 8px
+}
+ 
+.coral-button:hover {
+    background: #077dad;
+}
+ 
+@media screen and (max-width: 768px) {
+    #__next > div > div > div {
+        padding: 0!important;
     }
-    
-    .text+.text {
-        margin-top: 8px
+}
+/* ===================== Дополнения конструктора =====================
+   Всё выше — шаблон общих стилей Coral без изменений.
+   Ниже — то, на чём держатся блоки конструктора. */
+
+/* Отступы между секциями: wrapper 12px сверху/снизу + .mt-1 у самостоятельных секций.
+   Части одной секции идут без .mt-1 — вплотную (24px). Итог как в шаблоне: 80px десктоп / 60px мобильный. */
+@media screen and (min-width: 769px) {
+    section > article .wrapper {
+        padding-top: 12px;
+        padding-bottom: 12px
     }
-    
-    .coral-button:hover {
-        background: #077dad;
+}
+
+.mt-1 {
+    margin-top: 56px
+}
+
+@media screen and (max-width: 768px) {
+    .mt-1 {
+        margin-top: 0
     }
-    
-    @media screen and (max-width: 768px) {
-        #__next>div>div>div {
-            padding: 0 !important;
-        }
-    }
-    
-    section:has(.contacts) .wrapper {
-    padding-bottom: 56px;
-    }
-    
-    /* Универсальная сетка (grid-auto) */
-    
-    .grid-auto {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 24px;
-    }
-    .grid-auto--1  > * { grid-column: span 12; }
-    .grid-auto--2  > * { grid-column: span 6; }
-    .grid-auto--3  > * { grid-column: span 4; }
-    .grid-auto--4  > * { grid-column: span 3; }
-    .grid-auto--5  > *:nth-child(-n+3)      { grid-column: span 4; }
-    .grid-auto--5  > *:nth-last-child(-n+2) { grid-column: span 6; }
-    .grid-auto--6  > * { grid-column: span 4; }
-    .grid-auto--7  > *:nth-child(-n+4)      { grid-column: span 3; }
-    .grid-auto--7  > *:nth-last-child(-n+3) { grid-column: span 4; }
-    .grid-auto--8  > * { grid-column: span 3; }
-    .grid-auto--9  > * { grid-column: span 4; }
-    .grid-auto--10 > *:nth-child(-n+4)      { grid-column: span 3; }
-    .grid-auto--10 > *:nth-last-child(-n+6) { grid-column: span 4; }
-    
-    @media screen and (max-width: 1024px) {
-        .grid-auto { grid-template-columns: repeat(2, 1fr); }
-        .grid-auto > * { grid-column: auto !important; }
-    }
-    
-    @media screen and (max-width: 768px) {
-        .grid-auto { grid-template-columns: 1fr; }
-    }
-    
-    .wrapper > .grid-auto:first-child { margin-top: 0; }
-   
+}
+
+section:has(.contacts) .wrapper {
+    padding-bottom: 56px
+}
+
+/* Универсальная сетка плашек (grid-auto) */
+.grid-auto {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}
+.grid-auto--1  > * { grid-column: span 12; }
+.grid-auto--2  > * { grid-column: span 6; }
+.grid-auto--3  > * { grid-column: span 4; }
+.grid-auto--4  > * { grid-column: span 3; }
+.grid-auto--5  > *:nth-child(-n+3)      { grid-column: span 4; }
+.grid-auto--5  > *:nth-last-child(-n+2) { grid-column: span 6; }
+.grid-auto--6  > * { grid-column: span 4; }
+.grid-auto--7  > *:nth-child(-n+4)      { grid-column: span 3; }
+.grid-auto--7  > *:nth-last-child(-n+3) { grid-column: span 4; }
+.grid-auto--8  > * { grid-column: span 3; }
+.grid-auto--9  > * { grid-column: span 4; }
+.grid-auto--10 > *:nth-child(-n+4)      { grid-column: span 3; }
+.grid-auto--10 > *:nth-last-child(-n+6) { grid-column: span 4; }
+
+@media screen and (max-width: 1024px) {
+    .grid-auto { grid-template-columns: repeat(2, 1fr); }
+    .grid-auto > * { grid-column: auto !important; }
+    .grid-auto > *:last-child:nth-child(odd) { grid-column: 1 / -1 !important; }
+}
+
+@media screen and (max-width: 768px) {
+    .grid-auto { grid-template-columns: 1fr; }
+}
+
+.wrapper > .grid-auto:first-child { margin-top: 0; }
 </style>
+ 
+ 
+ 
+<script>
+(() => {
+const NBSP = '\u00A0';
+const MAX_LEN = 3;
+ 
+const W = '[\\p{L}\\p{N}]';
+const SYMBOLS = '[₽$€£¥%‰°]';
+ 
+const rules = [
+[new RegExp(`(?<!${W})(${W}{1,${MAX_LEN}})\\s+(?=\\S)`, 'gu'), `$1${NBSP}`],
+[new RegExp(`(\\d)\\s+(${SYMBOLS})`, 'gu'), `$1${NBSP}$2`],
+[new RegExp(`(\\d)\\s+(\\p{L}{1,${MAX_LEN}})(?!\\p{L})`, 'gu'), `$1${NBSP}$2`],
+[new RegExp(`\\s+(${W}{1,${MAX_LEN}}|${SYMBOLS})(?=[.!?…]+(?:\\s|$)|$)`, 'gu'), `${NBSP}$1`],
+];
+ 
+const SKIP = new Set(['SCRIPT', 'STYLE', 'TEXTAREA', 'INPUT', 'CODE', 'PRE', 'NOSCRIPT', 'SVG']);
+ 
+const fix = text => rules.reduce((t, [re, rep]) => t.replace(re, rep), text);
+ 
+let fixedCount = 0;
+ 
+function fixTextNode(n) {
+const p = n.parentElement;
+if (!p || SKIP.has(p.tagName.toUpperCase()) || p.isContentEditable) return;
+const fixed = fix(n.nodeValue);
+if (fixed !== n.nodeValue) {
+n.nodeValue = fixed;
+fixedCount++;
+}
+}
+ 
+function processTree(root) {
+const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+const textNodes = [];
+const shadowHosts = [];
+let node = root.nodeType === Node.TEXT_NODE ? root : walker.currentNode;
+ 
+if (root.nodeType === Node.TEXT_NODE) {
+fixTextNode(root);
+return;
+}
+ 
+do {
+if (node.nodeType === Node.TEXT_NODE) textNodes.push(node);
+else if (node.shadowRoot) shadowHosts.push(node.shadowRoot);
+} while ((node = walker.nextNode()));
+ 
+textNodes.forEach(fixTextNode);
+ 
+for (const sr of shadowHosts) {
+processTree(sr);
+observe(sr);
+}
+}
+ 
+// Очередь: собираем изменения и обрабатываем раз в кадр
+const queue = new Set();
+let scheduled = false;
+ 
+function schedule(target) {
+queue.add(target);
+if (scheduled) return;
+scheduled = true;
+requestAnimationFrame(() => {
+scheduled = false;
+const items = [...queue];
+queue.clear();
+items.forEach(t => t.isConnected && processTree(t));
+});
+}
+ 
+const observed = new WeakSet();
+ 
+function observe(target) {
+if (observed.has(target)) return;
+observed.add(target);
+new MutationObserver(mutations => {
+for (const m of mutations) {
+if (m.type === 'characterData') schedule(m.target);
+else m.addedNodes.forEach(n => schedule(n));
+}
+}).observe(target, {
+childList: true,
+subtree: true,
+characterData: true
+});
+}
+ 
+function start() {
+processTree(document.body);
+observe(document.body);
+console.log(`[nbsp] исправлено текстовых узлов: ${fixedCount}`);
+}
+ 
+if (document.readyState === 'complete') setTimeout(start, 500);
+else window.addEventListener('load', () => setTimeout(start, 500));
+})();
+</script>

@@ -1,0 +1,378 @@
+/* ============================================================
+   Coral Builder — новый каркас (shell)
+   Верхняя стеклянная панель · контекстный рельс · персистентное превью
+   Корпоративные цвета Coral: --brand #0092D0 / --brand-d #0B3C5D
+   ============================================================ */
+
+:root{
+  --glass: rgba(255,255,255,.64);
+  --glass-strong: rgba(255,255,255,.78);
+  --glass-brd: rgba(11,60,93,.12);
+  --glass-shadow: 0 10px 30px -14px rgba(11,60,93,.30), 0 2px 8px -4px rgba(11,60,93,.14);
+  --rail-w: 268px;
+  --rail-min: 60px;
+  --top-h: 58px;
+  --shell-gap: 18px;
+  --shell-pad: 18px;
+  --sticky-top: 84px;                 /* 12 (top) + ~58 (bar) + 14 (gap) */
+}
+
+/* фон с лёгким фирменным свечением, чтобы стекло было «стеклом» */
+body{
+  background:
+    radial-gradient(1100px 560px at 6% -12%, rgba(0,146,208,.12), transparent 60%),
+    radial-gradient(880px 520px at 102% -6%, rgba(11,60,93,.08), transparent 55%),
+    var(--page);
+  background-attachment: fixed;
+}
+
+.app{ min-height:100vh; }
+
+/* Скрываем видимые полоски скролла во всём проекте (скролл остаётся, полоска — нет).
+   !important — чтобы перебить точечные правила scrollbar в styles.css (html, aside, pre.code) */
+*{ scrollbar-width: none !important; -ms-overflow-style: none !important; }
+*::-webkit-scrollbar{ width: 0 !important; height: 0 !important; display: none !important; }
+
+/* …кроме ГЛАВНОЙ полосы прокрутки страницы — она видимая, аккуратная, серая, СТАНДАРТНОГО размера для сайтов.
+   Внутренние окна (код, рельс, превью, списки) остаются без полос. html перебивает правило * выше по специфичности.
+   scrollbar-width:auto + явные правила ::-webkit-scrollbar → классическая полоса фиксированной ширины (не «fluent»,
+   которая расширяется при наведении). scrollbar-color НЕ задаём — именно он включает расширяющуюся fluent-полосу. */
+html{ scrollbar-width: auto !important; }
+html::-webkit-scrollbar{ width: 15px !important; height: 15px !important; display: block !important; }
+html::-webkit-scrollbar-track{ background: transparent !important; }
+html::-webkit-scrollbar-thumb{ background: #c3cfd9 !important; border-radius: 999px !important; border: 4px solid transparent !important; background-clip: padding-box !important; }
+html::-webkit-scrollbar-thumb:hover{ background: #aebdc9 !important; }
+
+/* Кнопка-закрепление рельса не нужна на телефоне (там рельс — выезжающая панель) */
+@media (max-width: 880px){ .rail-pin{ display: none !important; } }
+
+/* Пустой «Код» — в одном стиле с пустым «Превью»: серый фон на всю панель */
+#cb-export:has(.cb-export-empty){ padding: 0; }
+.cb-export-empty{ background: var(--page); border-radius: 15px; }
+
+/* Плавный переход по клику в меню не прячет блок под верхней панелью */
+.canvas .block{ scroll-margin-top: 96px; }
+
+/* Импорт: подсветка смысловой секции при связке с превью/кодом */
+.tz-sec-focus{ box-shadow: 0 0 0 3px rgba(0,146,208,.35) !important; border-color: var(--brand) !important; transition: box-shadow .2s, border-color .2s; }
+/* подсветка конкретной части (одного шаблона внутри разделённой секции) */
+.tz-mk-focus{ box-shadow: 0 0 0 3px rgba(0,146,208,.38) !important; border-color: var(--brand) !important; transition: box-shadow .2s, border-color .2s; }
+#tz-result .tz-sec{ cursor: pointer; }
+#tz-result .tz-mk-group{ cursor: pointer; }
+
+/* ---------- ВЕРХНЯЯ СТЕКЛЯННАЯ ПАНЕЛЬ ---------- */
+.topbar{
+  position: sticky; top: 12px; z-index: 60;
+  margin: 12px 16px 0;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
+  height: var(--top-h); padding: 8px 16px;
+  border-radius: 16px;
+  background: var(--glass); border: 1px solid var(--glass-brd);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(20px) saturate(1.7); backdrop-filter: blur(20px) saturate(1.7);
+  transition: width .30s cubic-bezier(.22,.9,.3,1), padding .30s cubic-bezier(.22,.9,.3,1);
+}
+.topbar-brand{ display:flex; align-items:center; justify-self:start; overflow:hidden; cursor:pointer; transition:width .30s cubic-bezier(.22,.9,.3,1); }
+.brand-logo{ height: 26px; width:auto; display:block; max-width:none; }
+.topbar-center{ justify-self:center; display:flex; min-width:0; }
+/* флайаут вкладок — только десктоп (ниже в @media min-width:881 включается как flex); на телефоне скрыт */
+.tab-fly{ display:none; }
+
+/* переключатель режимов — сегмент-контрол в стекле */
+.topbar-center .mode-switch{
+  display:inline-flex; gap:3px; margin:0; padding:3px;
+  background: rgba(11,60,93,.06); border:1px solid var(--glass-brd); border-radius:999px;
+}
+.topbar-center .mode-switch button{
+  border:0; background:transparent; color:var(--muted);
+  font-family:inherit; font-size:13.5px; font-weight:600;
+  padding:7px 18px; border-radius:999px; cursor:pointer;
+  transition: color .18s, background .18s, box-shadow .18s;
+}
+.topbar-center .mode-switch button:hover{ color:var(--brand-d); background:transparent; border:0; }
+.topbar-center .mode-switch button.is-active{
+  background:#fff; color:var(--brand-d);
+  box-shadow: 0 2px 8px -2px rgba(11,60,93,.24); border:0;
+}
+
+/* ============================================================
+   ДЕСКТОП: сетка рельс | холст | превью
+   ============================================================ */
+@media (min-width: 881px){
+
+  /* ---------- ВЕРХНЯЯ ПАНЕЛЬ: сворачивание при прокрутке ---------- */
+  .topbar{ width: calc(100% - 32px); }                 /* явная ширина — чтобы плавно анимировать сворачивание */
+  body.scrolled .topbar{ display:flex; align-items:center; }
+  body.scrolled .topbar-center{ display:none; }        /* вкладки видны только вверху страницы */
+  /* по умолчанию свёрнута до кружка Coral (левый квадрат 474×474 в SVG) */
+  body.scrolled .topbar{ width: var(--rail-min); justify-content:center; padding:8px; }
+  body.scrolled .topbar-brand{ width: 26px; }
+  /* рельс раскрыт (закреплён ИЛИ наведён) → панель повторяет его ширину с логотипом; в Импорте — никогда */
+  body.scrolled.rail-pinned:not(.mode-import) .topbar,
+  body.scrolled.rail-hover:not(.mode-import) .topbar{ width: var(--rail-w); justify-content:flex-start; padding:8px 18px; }
+  body.scrolled.rail-pinned:not(.mode-import) .topbar-brand,
+  body.scrolled.rail-hover:not(.mode-import) .topbar-brand{ width: auto; }
+
+  /* ---------- ФЛАЙАУТ ВЫБОРА ВКЛАДКИ (при прокрутке вниз, по наведению на кружок Coral) ---------- */
+  /* Отдельная «стеклянная» карточка между кружком и рельсом; фон/размытие — как у верхней панели.
+     Равные отступы сверху и снизу (14px — как текущий зазор между кружком и рельсом). */
+  .tab-fly{
+    position: absolute; top: calc(100% + 14px); left: 0;
+    display: flex; flex-direction: column; gap: 2px;
+    width: var(--rail-min); padding: 7px;
+    /* непрозрачный фон (не «стекло») — чтобы при прокрутке до низа флайаут чисто перекрывал рельс, а не сливался с ним */
+    background: #f8fafc; border: 1px solid var(--glass-brd); border-radius: 18px;
+    box-shadow: var(--glass-shadow);
+    opacity: 0; pointer-events: none; transform: translateY(-6px);
+    transition: opacity .2s cubic-bezier(.22,.9,.3,1), transform .2s cubic-bezier(.22,.9,.3,1), width .3s cubic-bezier(.22,.9,.3,1);
+    z-index: 80;
+  }
+  /* невидимый «мостик» через зазор, чтобы наведение не срывалось при переходе мыши с кружка на меню */
+  .tab-fly::before{ content:""; position:absolute; left:0; right:0; top:-14px; height:14px; }
+  /* показываем только когда страница прокручена и курсор на верхней панели (кружке) или на самом меню */
+  body.scrolled.tabfly-open .tab-fly{ opacity:1; pointer-events:auto; transform:none; }
+  /* раскрытое меню (рельс закреплён или наведён, верхняя панель при скролле расширена) — с подписями; в Импорте всегда узкое */
+  body.scrolled.rail-pinned:not(.mode-import) .tab-fly,
+  body.scrolled.rail-hover:not(.mode-import) .tab-fly{ width: var(--rail-w); }
+
+  /* строка меню = «шапка рельса» для другой вкладки: иконка (как в рельсе) + ПОДПИСЬ большими буквами */
+  .tab-fly-btn{
+    display: flex; align-items: center; gap: 12px; width: 100%;
+    height: 40px; padding: 0 10px; border: 0; background: transparent; cursor: pointer;
+    border-radius: 10px;
+    font: 800 11px 'Manrope', sans-serif; letter-spacing: .7px; text-transform: uppercase; color: var(--muted);
+    transition: background .15s, color .15s;
+  }
+  .tab-fly-btn:hover{ background: var(--tint); color: var(--brand-d); }
+  .tab-fly-ico{ flex: none; width: 20px; height: 20px; background: var(--brand); opacity: .9;
+    -webkit-mask: var(--fly-mask) center/contain no-repeat; mask: var(--fly-mask) center/contain no-repeat; }
+  .tab-fly-ico--ref{ --fly-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1.5'/%3E%3C/svg%3E"); }
+  .tab-fly-ico--build{ --fly-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 21 8 12 13 3 8Z'/%3E%3Cpath d='M3 12 12 17 21 12'/%3E%3Cpath d='M3 16 12 21 21 16'/%3E%3C/svg%3E"); }
+  .tab-fly-ico--import{ --fly-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v10'/%3E%3Cpath d='M8 9l4 4 4-4'/%3E%3Cpath d='M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3'/%3E%3C/svg%3E"); }
+  .tab-fly-txt{ white-space: nowrap; overflow: hidden; }
+  /* узкое меню по умолчанию — только иконки по центру */
+  .tab-fly-txt{ display: none; }
+  .tab-fly-btn{ justify-content: center; gap: 0; padding: 0; }
+  /* раскрытое меню — иконка + подпись */
+  body.scrolled.rail-pinned:not(.mode-import) .tab-fly-txt,
+  body.scrolled.rail-hover:not(.mode-import) .tab-fly-txt{ display: block; }
+  body.scrolled.rail-pinned:not(.mode-import) .tab-fly-btn,
+  body.scrolled.rail-hover:not(.mode-import) .tab-fly-btn{ justify-content: flex-start; gap: 12px; padding: 0 10px; }
+  /* в меню — только ДВЕ другие вкладки (активную прячем; setMode вешает .is-active на текущую) */
+  .tab-fly-btn.is-active{ display: none; }
+  /* рельс освобождает место под флайаут: съезжает вниз И укорачивается на высоту меню, чтобы помещаться под ним
+     даже в самом низу страницы (где двигаться вниз уже некуда) и не наслаиваться на флайаут */
+  body.scrolled.tabfly-open #sidebar{
+    top: calc(var(--sticky-top) + var(--fly-h, 96px) + 14px);
+    height: calc(100vh - var(--sticky-top) - var(--fly-h, 96px) - 54px);
+  }
+
+  .shell{
+    display:grid; align-items:start; gap: var(--shell-gap);
+    padding: var(--shell-gap) 16px 40px;
+    grid-template-columns: auto minmax(0,1fr);          /* Справочник: рельс + холст */
+  }
+  body.mode-builder .shell,
+  body.mode-import  .shell{ grid-template-columns: auto minmax(0,1.32fr) minmax(0,1fr); }
+
+  /* ---------- КОНТЕКСТНЫЙ РЕЛЬС ---------- */
+  .rail{
+    position: sticky; top: var(--sticky-top);
+    width: var(--rail-min);
+    height: calc(100vh - var(--sticky-top) - 20px);
+    background: var(--glass); border:1px solid var(--glass-brd);
+    border-radius: 18px; box-shadow: var(--glass-shadow);
+    -webkit-backdrop-filter: blur(20px) saturate(1.7); backdrop-filter: blur(20px) saturate(1.7);
+    padding: 10px; overflow: hidden;
+    transition: width .30s cubic-bezier(.22,.9,.3,1), top .3s cubic-bezier(.22,.9,.3,1), height .3s cubic-bezier(.22,.9,.3,1);
+  }
+  .rail:hover, body.rail-pinned .rail{ width: var(--rail-w); overflow:hidden; }
+  /* Импорт: рельс есть как полоска с иконкой импорта, но не раскрывается */
+  body.mode-import .rail, body.mode-import .rail:hover{ width: var(--rail-min) !important; }
+  body.mode-import .rail-pin{ display: none; }
+  .rail-inner{ height:100%; overflow-y:auto; overflow-x:hidden; padding-right:2px; scrollbar-width:none; -ms-overflow-style:none; }
+  .rail-inner::-webkit-scrollbar{ width:0; height:0; display:none; }
+
+  /* заголовок-капсула рельса (виден в свёрнутом виде как иконка); закреплён сверху при прокрутке списка */
+  .rail-cap{
+    position: sticky; top: 0; z-index: 2;
+    display:flex; align-items:center; height:40px; padding:0 10px; margin-bottom:6px;
+    font-size:11px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:var(--muted);
+    white-space:nowrap; background: rgba(247,249,251,.96);
+  }
+  .rail-cap::before{
+    content:""; flex:none; width:20px; height:20px; margin-right:12px; border-radius:6px;
+    background:var(--brand); opacity:.9;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1.5'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1.5'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  /* Сборщик — иконка сборки (слои) */
+  .rail-cap--build::before{
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 21 8 12 13 3 8Z'/%3E%3Cpath d='M3 12 12 17 21 12'/%3E%3Cpath d='M3 16 12 21 21 16'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 21 8 12 13 3 8Z'/%3E%3Cpath d='M3 12 12 17 21 12'/%3E%3Cpath d='M3 16 12 21 21 16'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  /* Импорт — иконка загрузки в лоток */
+  .rail-cap--import::before{
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v10'/%3E%3Cpath d='M8 9l4 4 4-4'/%3E%3Cpath d='M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v10'/%3E%3Cpath d='M8 9l4 4 4-4'/%3E%3Cpath d='M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+
+  /* В свёрнутом рельсе видны значки-чипы каждого пункта (структура);
+     скрыт только текст/подписи групп/поиск — они появляются при раскрытии. */
+  /* Свёрнутый рельс без пустот: поиск → лупа, заголовки групп → короткая подпись (ГС, КС…) */
+  .grp-ab{ display: none; }
+  body:not(.rail-pinned) .rail:not(:hover) .grp-full{ display: none; }
+  body:not(.rail-pinned) .rail:not(:hover) .grp-ab{ display: block; text-align: center; }
+  body:not(.rail-pinned) .rail:not(:hover) .nav-grp-title,
+  body:not(.rail-pinned) .rail:not(:hover) .cb-pal-title{ padding: 6px 0 5px; }
+  body:not(.rail-pinned) .rail:not(:hover) .search{
+    display: block; width: 30px; height: 30px; margin: 0 auto 10px; padding: 0; border-radius: 9px;
+    border: 0; color: transparent; text-indent: -9999px; box-shadow: none;
+    background: var(--tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230092D0' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4-4'/%3E%3C/svg%3E") center/15px no-repeat;
+  }
+
+  /* значки-чипы пунктов */
+  .rail .nav-link:not(.hide), .rail .cb-pal-item{ display: flex; align-items: center; gap: 11px; padding: 7px 9px; }
+  .nav-ico, .cb-pal-ico{
+    flex: none; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+    background: var(--tint); color: var(--brand); font: 800 11.5px/1 'Manrope', sans-serif; letter-spacing: .2px;
+  }
+  .nav-txt, .cb-pal-txt{ white-space: nowrap; overflow: hidden; }
+  .nav-link.active .nav-ico{ background: rgba(255,255,255,.22); color: #fff; }
+
+  /* в свёрнутом виде: только чип по центру — убираем текст из потока, рамку/фон-пилюлю */
+  body:not(.rail-pinned) .rail:not(:hover) .nav-txt,
+  body:not(.rail-pinned) .rail:not(:hover) .cb-pal-txt{ display: none; }
+  body:not(.rail-pinned) .rail:not(:hover) .nav-link:not(.hide),
+  body:not(.rail-pinned) .rail:not(:hover) .cb-pal-item{ justify-content: center; gap: 0; padding-left: 0; padding-right: 0; }
+  body:not(.rail-pinned) .rail:not(:hover) .cb-pal-item{ border-color: transparent; background: transparent; }
+  body:not(.rail-pinned) .rail:not(:hover) .nav-link{ background: transparent !important; }
+  body:not(.rail-pinned) .rail:not(:hover) .nav-link.active .nav-ico{ background: var(--brand); color: #fff; }
+
+  /* кнопка-закрепление — внутри рельса, справа от «Блоки»; видна только когда рельс раскрыт */
+  .rail-pin{
+    position: absolute; top: 15px; right: 14px; z-index: 3;
+    width: 30px; height: 30px; border-radius: 9px; cursor: pointer;
+    display: grid; place-items: center; color: var(--muted);
+    background: transparent; border: 1px solid transparent;
+    opacity: 0; pointer-events: none;
+    transition: opacity .18s, color .15s, background .15s;
+  }
+  .rail:hover .rail-pin, body.rail-pinned .rail-pin{ opacity: 1; pointer-events: auto; }
+  .rail-pin:hover{ color: var(--brand); background: var(--tint); }
+  .rail-pin.is-active{ color: #fff; background: var(--brand-d); border-color: var(--brand-d); }
+  .rail-pin svg{ width: 16px; height: 16px; }
+
+  .rail .search{ margin:0 2px 12px; }
+  .rail #nav{ padding:0 2px; }
+
+  /* переключение содержимого рельса по режиму */
+  .rail-ref{ display:block; }
+  .rail-cap--import{ display:none; }
+  body.mode-builder .rail-ref{ display:none; }
+  body.mode-builder .cb-palette{ display:block; }
+  body.mode-import .rail-ref{ display:none; }
+  body.mode-import .rail-cap--import{ display:flex; }
+
+  /* ---------- ХОЛСТ ---------- */
+  main.canvas{
+    max-width:none; width:auto; margin:0; min-width:0;
+    padding: 4px 6px 40px;
+  }
+  body.mode-builder main.canvas, body.mode-import main.canvas{ padding: 4px 4px 40px; max-width: none; }
+  .canvas .hero{ margin-bottom: 20px; }
+
+  /* Картинки-превью блоков: не тянем на всю ширину блока и не раздуваем.
+     Рамка обнимает картинку, высота ограничена; полный размер — по клику (лайтбокс). */
+  /* Превью-картинки: одинаковая ширина у всех (как у «Плашек с галочками»), высота — по аспекту.
+     Фон вокруг — как у окна кода, отделяет картинку; свободное место по бокам залито этим фоном. */
+  .canvas .block .preview{
+    display: flex; justify-content: center; align-items: flex-start;
+    width: 100%; max-width: none; padding: 20px;
+    background: var(--code-bg); border: 1px solid var(--code-line); border-radius: 14px;
+  }
+  .canvas .block .preview img{
+    width: 1140px; max-width: 100%; height: auto;
+    border-radius: 8px; box-shadow: var(--shadow); cursor: zoom-in;
+  }
+
+  /* Код в Справочнике: окно под размер шаблона (до предела), тянется по высоте; скролл — только по клику (как вкладка «Код») */
+  .canvas .block pre.code{ height: auto; min-height: 0; max-height: 500px; overflow: hidden; resize: vertical; cursor: default; }
+  .canvas .block pre.code:focus{ overflow: auto; outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(0,146,208,.16); }
+
+  /* builder: одна колонка блоков (превью вынесено вправо) */
+  .cb-wrap{ grid-template-columns: 1fr !important; }
+
+  /* ---------- ПЕРСИСТЕНТНОЕ ПРЕВЬЮ ---------- */
+  #cb-side{ display:none; }
+  body.mode-builder #cb-side, body.mode-import #cb-side{
+    display:block; position: sticky; top: var(--sticky-top);
+  }
+  /* при прокрутке (панель свёрнута) превью тоже уходит наверх — без пустого места сверху */
+  body.scrolled.mode-builder #cb-side, body.scrolled.mode-import #cb-side{ top: 18px; }
+  /* превью перекрывает верхнюю панель ТОЛЬКО в полноэкранном режиме, иначе уходит под неё */
+  body.cb-fs-lock #cb-side{ z-index: 9999; }
+  #cb-side .cb-right:not(.cb-fs){ position: static; }
+  #cb-side .cb-pane[data-pane="preview"] #cb-preview{ height: calc(100vh - var(--sticky-top) - 78px); min-height: 420px; }
+  body.scrolled #cb-side .cb-pane[data-pane="preview"] #cb-preview{ height: calc(100vh - 18px - 78px); }
+  /* полноэкранный режим: превью тянется до пола, как вкладка «Код» (в фуллскрине верхней панели нет — не вычитаем её высоту) */
+  body.cb-fs-lock #cb-side .cb-right.cb-fs .cb-pane[data-pane="preview"] #cb-preview{ height: calc(100vh - 78px); min-height: 0; }
+
+  /* открепление превью в отдельное окно */
+  .cb-detach-bar{ display:none; }
+  body.pv-detached .cb-detach-bar{ display:flex; }
+  body.pv-detached #cb-side .cb-right{ display:none; }
+  /* при откреплении превью в отдельное окно — остальное во всю ширину, баннер «Вернуть» сверху */
+  /* открепление: рельс сверху слева (как в Справочнике), «Вернуть сюда» — над холстом по ширине интерфейса */
+  body.pv-detached.mode-builder .shell,
+  body.pv-detached.mode-import .shell{ grid-template-columns: auto minmax(0,1fr); grid-template-rows: auto minmax(0,1fr); }
+  body.pv-detached #sidebar{ grid-column: 1; grid-row: 1 / 3; }
+  body.pv-detached #cb-side{ position: static; grid-column: 2; grid-row: 1; order: 0; z-index: auto; }
+  body.pv-detached #canvas{ grid-column: 2; grid-row: 2; }
+
+  /* узкий десктоп — превью уезжает под холст, рельс сам сворачивается */
+  @media (max-width: 1180px){
+    body.mode-builder .shell, body.mode-import .shell{ grid-template-columns: auto minmax(0,1fr); }
+    body.mode-builder #cb-side, body.mode-import #cb-side{
+      position: static; grid-column: 1 / -1; top:auto;
+    }
+    #cb-side .cb-pane[data-pane="preview"] #cb-preview{ height: 62vh; }
+  }
+}
+
+/* ============================================================
+   МОБИЛЬНЫЙ: только Справочник, без шапки и нижних панелей.
+   Страница сразу открыта на первом блоке, блоки листаются свайпом,
+   вся навигация — в кнопке справа внизу (выезжающее меню описано в styles.css @max-880)
+   ============================================================ */
+@media (max-width: 880px){
+  .topbar{ display:none; }                       /* сверху — ничего */
+  .shell{ display:block; padding:0; }
+  main.canvas{ max-width:none; }
+  #cb-side{ display:none !important; }           /* превью — только на компьютере */
+  #cb-palette{ display:none !important; }        /* палитра Сборщика — только на компьютере */
+  .rail-cap--import{ display:none !important; }
+}
+
+/* ---------- Лайтбокс: картинка блока на весь экран по клику ---------- */
+.img-lightbox{
+  position: fixed; inset: 0; z-index: 200; display: none;
+  align-items: center; justify-content: center; padding: 28px;
+  background: rgba(11,32,45,.82); cursor: zoom-out;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.img-lightbox.open{ display: flex; }
+.img-lightbox img{
+  max-width: 94vw; max-height: 90vh; width: auto; height: auto;
+  border-radius: 12px; box-shadow: 0 30px 90px rgba(0,0,0,.55); cursor: default;
+}
+.img-lightbox-close{
+  position: absolute; top: 18px; right: 22px; width: 46px; height: 46px; border-radius: 50%;
+  border: 0; background: rgba(255,255,255,.16); color: #fff; font-size: 24px; line-height: 1; cursor: pointer;
+  display: grid; place-items: center; transition: background .15s;
+}
+.img-lightbox-close:hover{ background: rgba(255,255,255,.3); }
+
+@media (prefers-reduced-motion: reduce){
+  .rail, .rail .search, .rail #nav, .rail .cb-palette, .rail-pin{ transition:none !important; }
+}

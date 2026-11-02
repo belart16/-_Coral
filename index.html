@@ -8,25 +8,72 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/builder.css">
+<link rel="stylesheet" href="assets/shell.css">
 </head>
 <body>
-<div class="wrap">
-  <aside id="sidebar">
-    <button class="nav-close" id="nav-close" type="button" aria-label="Закрыть меню"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    <img class="logo" alt="Coral Travel — справочник кода" src="assets/coral_logo.svg">
-    <input class="search" id="search" type="search" placeholder="Поиск блока…" autocomplete="off">
-    <nav id="nav"></nav>
-  </aside>
-  <main>
-    <div class="hero">
-      <h1 id="hero-title">Справочник кода — библиотека блоков</h1>
-      <p id="hero-subtitle"></p>
+<div class="app">
+
+  <!-- ВЕРХНЯЯ СТЕКЛЯННАЯ ПАНЕЛЬ -->
+  <header class="topbar" id="topbar">
+    <div class="topbar-brand">
+      <img class="brand-logo" alt="Coral Travel — справочник кода" src="assets/coral_logo.svg">
     </div>
-    <div id="blocks-root"></div>
-    <div class="empty" id="empty">Ничего не найдено.</div>
-  </main>
+    <div class="topbar-center">
+      <div class="mode-switch">
+        <button type="button" data-mode="reference" class="is-active">Справочник</button>
+        <button type="button" data-mode="builder">Сборщик</button>
+        <button type="button" data-mode="import">Импорт</button>
+      </div>
+    </div>
+    <!-- Флайаут выбора вкладки при прокрутке вниз (появляется под кружком Coral по наведению) -->
+    <div class="tab-fly" id="tab-fly" aria-label="Переключить вкладку">
+      <button type="button" class="tab-fly-btn" data-mode="reference"><span class="tab-fly-ico tab-fly-ico--ref"></span><span class="tab-fly-txt">Справочник</span></button>
+      <button type="button" class="tab-fly-btn" data-mode="builder"><span class="tab-fly-ico tab-fly-ico--build"></span><span class="tab-fly-txt">Сборщик</span></button>
+      <button type="button" class="tab-fly-btn" data-mode="import"><span class="tab-fly-ico tab-fly-ico--import"></span><span class="tab-fly-txt">Импорт</span></button>
+    </div>
+  </header>
+
+  <!-- РАБОЧИЙ СТОЛ: рельс | холст | превью -->
+  <div class="shell" id="shell">
+
+    <!-- КОНТЕКСТНЫЙ РЕЛЬС -->
+    <aside id="sidebar" class="rail">
+      <button class="nav-close" id="nav-close" type="button" aria-label="Закрыть меню"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <button class="rail-pin" id="rail-pin" type="button" aria-pressed="false" title="Закрепить панель открытой">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6M10 4l-.7 6.2a3 3 0 0 1-1 1.9L6 14h12l-2.3-1.9a3 3 0 0 1-1-1.9L14 4M12 14v6"/></svg>
+      </button>
+      <div class="rail-inner">
+        <!-- Логотип в шапке выезжающего меню (только телефон/планшет) -->
+        <div class="rail-brand"><img class="rail-brand-logo" src="assets/coral_mark.svg" alt="Coral Travel"></div>
+        <!-- Справочник: поиск + навигация -->
+        <div class="rail-ref">
+          <div class="rail-cap">Справочник</div>
+          <input class="search" id="search" type="search" placeholder="Поиск блока…" autocomplete="off">
+          <nav id="nav"></nav>
+        </div>
+        <!-- Сборщик: палитра добавления -->
+        <div id="cb-palette" class="cb-palette"></div>
+        <!-- Импорт: только иконка (полоска не раскрывается) -->
+        <div class="rail-cap rail-cap--import">Импорт</div>
+      </div>
+    </aside>
+
+    <!-- ХОЛСТ -->
+    <main id="canvas" class="canvas">
+      <div id="blocks-root"></div>
+      <div class="empty" id="empty">Ничего не найдено.</div>
+      <div id="builder-root"></div>
+      <div id="import-root"></div>
+    </main>
+
+    <!-- ПЕРСИСТЕНТНОЕ ПРЕВЬЮ / КОД (общий для Сборщика и Импорта) -->
+    <section id="cb-side" class="cb-side"></section>
+
+  </div>
 </div>
 
+<!-- Модалка инструкции -->
 <div class="modal-overlay" id="modal">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-head">
@@ -37,6 +84,7 @@
   </div>
 </div>
 
+<!-- Мобильная навигация справочника (выезжающий список блоков) -->
 <button class="nav-fab" id="nav-toggle" type="button" aria-label="Открыть навигацию и поиск" aria-controls="sidebar" aria-expanded="false">
   <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true">
     <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -46,5 +94,9 @@
 <div class="pager-counter" id="pager-counter" aria-hidden="true"></div>
 
 <script src="assets/app.js"></script>
+<script src="assets/fflate.min.js"></script>
+<script src="assets/tz_parser.js"></script>
+<script src="assets/coral_assembler.js"></script>
+<script src="assets/builder.js"></script>
 </body>
 </html>

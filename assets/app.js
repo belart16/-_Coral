@@ -3,9 +3,23 @@
 
 const COPY_SVG = '<svg class="copy-ico" viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M7 2.5h7A1.5 1.5 0 0 1 15.5 4v9A1.5 1.5 0 0 1 14 14.5H7A1.5 1.5 0 0 1 5.5 13V4A1.5 1.5 0 0 1 7 2.5Zm0 1.2A.3.3 0 0 0 6.7 4v9c0 .17.13.3.3.3h7a.3.3 0 0 0 .3-.3V4a.3.3 0 0 0-.3-.3H7ZM3.5 6.2v8.3A1.5 1.5 0 0 0 5 16h6.3v1.2H5A2.7 2.7 0 0 1 2.3 14.5V6.2H3.5Z"/></svg>';
 const INFO_SVG = '<svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M10 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 1.3a7.2 7.2 0 1 1 0 14.4 7.2 7.2 0 0 1 0-14.4Zm-.9 5.7h1.8v5.2H9.1V8.5Zm.9-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>';
+const FS_SVG = '<svg viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5V4h3.5M16 7.5V4h-3.5M4 12.5V16h3.5M16 12.5V16h-3.5"/></svg>';
+// окно кода: тянется по высоте (resize) + кнопка «на весь экран»
+function codeBox(vslug) {
+  return '<div class="code-box"><button class="code-fs" type="button" data-fscode="' + vslug + '" title="Открыть код на весь экран" aria-label="На весь экран">' + FS_SVG + '</button>' +
+    '<pre class="code" tabindex="0"><code id="code-' + vslug + '"></code></pre></div>';
+}
 const LABEL_RE = /^(css|html|js|javascript)(\s+expand\s+source)?$/i;
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+/* короткий значок-чип для пункта (видно в свёрнутом меню как «структуру») */
+function chipAbbr(name) {
+  const parts = String(name).replace(/[«»().,]/g, ' ').split(/\s+/).filter((w) => w.length > 2);
+  if (parts.length >= 2) return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+  const base = parts[0] || String(name).trim();
+  return base.charAt(0).toUpperCase() + (base.charAt(1) || '').toLowerCase();
+}
 
 function imgTag(folder, file, alt, cls) {
   const base = file.replace(/\.[^.]+$/, '');
@@ -84,19 +98,19 @@ function previewDiv(file, alt) {
 }
 
 function build(data) {
-  document.getElementById('hero-title').textContent = data.title;
   const total = data.groups.reduce((n, g) => n + g.blocks.length, 0);
-  document.getElementById('hero-subtitle').innerHTML = (data.subtitle_html || '').replace('{TOTAL}', total);
+  const heroT = document.getElementById('hero-title'); if (heroT) heroT.textContent = data.title;
+  const heroS = document.getElementById('hero-subtitle'); if (heroS) heroS.innerHTML = (data.subtitle_html || '').replace('{TOTAL}', total);
 
   const nav = document.getElementById('nav');
   const root = document.getElementById('blocks-root');
   const navParts = [], mainParts = [], codeJobs = [];
 
   for (const group of data.groups) {
-    navParts.push('<div class="nav-group"><div class="nav-grp-title">' + esc(group.title) + '</div>');
+    navParts.push('<div class="nav-group"><div class="nav-grp-title"><span class="grp-ab">' + esc(chipAbbr(group.title)) + '</span><span class="grp-full">' + esc(group.title) + '</span></div>');
     mainParts.push('<h2 class="grp-head">' + esc(group.title) + '</h2>');
     for (const b of group.blocks) {
-      navParts.push('<a class="nav-link" href="#' + b.slug + '" data-target="' + b.slug + '">' + esc(b.name) + '</a>');
+      navParts.push('<a class="nav-link" href="#' + b.slug + '" data-target="' + b.slug + '"><span class="nav-ico">' + esc(chipAbbr(b.name)) + '</span><span class="nav-txt">' + esc(b.name) + '</span></a>');
       const single = (b.variants.length === 1 && b.variants[0].label == null);
       const actions = helpBtn(b.slug, b.name) + (single ? copyBtn(b.variants[0].vslug, b.name, false) : '');
       let body =
@@ -107,14 +121,14 @@ function build(data) {
         '  </div>';
       if (single) {
         const v = b.variants[0];
-        body += '\n  ' + previewDiv(v.preview, b.name) + '<pre class="code"><code id="code-' + v.vslug + '"></code></pre>';
+        body += '\n  ' + previewDiv(v.preview, b.name) + codeBox(v.vslug);
         codeJobs.push(v);
       } else {
         for (const v of b.variants) {
           body += '\n  <div class="variant">\n    ' + previewDiv(v.preview, v.label) +
             '<div class="variant-head"><span class="variant-label">' + esc(v.label || '') + '</span>' +
             copyBtn(v.vslug, v.label || b.name, true) + '</div>\n' +
-            '    <pre class="code"><code id="code-' + v.vslug + '"></code></pre>\n  </div>';
+            '    ' + codeBox(v.vslug) + '\n  </div>';
           codeJobs.push(v);
         }
       }
@@ -168,6 +182,45 @@ function wire() {
     });
   });
 
+  /* открыть код на весь экран */
+  var fsOv = document.getElementById('code-fs-overlay');
+  if (!fsOv) {
+    fsOv = document.createElement('div');
+    fsOv.id = 'code-fs-overlay';
+    fsOv.className = 'code-fs-overlay';
+    fsOv.innerHTML =
+      '<div class="code-fs-panel">' +
+      '<div class="code-fs-head">' +
+      '<button class="copy-btn code-fs-copy" type="button">' + COPY_SVG + '<span class="copy-txt">Копировать</span></button>' +
+      '<button class="code-fs-close" type="button" title="Закрыть" aria-label="Закрыть">&times;</button>' +
+      '</div>' +
+      '<pre class="code-fs-pre"><code class="code-fs-code"></code></pre>' +
+      '</div>';
+    document.body.appendChild(fsOv);
+  }
+  var fsCode = fsOv.querySelector('.code-fs-code');
+  var fsCopy = fsOv.querySelector('.code-fs-copy');
+  var closeFs = function () { fsOv.classList.remove('open'); document.body.classList.remove('code-fs-on'); };
+  document.querySelectorAll('.code-fs').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var code = document.getElementById('code-' + btn.dataset.fscode);
+      fsCode.textContent = code ? code.textContent : '';
+      fsOv.classList.add('open'); document.body.classList.add('code-fs-on');
+    });
+  });
+  fsCopy.addEventListener('click', async function () {
+    var ok = await copyText(fsCode.textContent);
+    var txt = fsCopy.querySelector('.copy-txt');
+    if (ok) {
+      fsCopy.classList.add('done'); txt.textContent = 'Скопировано';
+      clearTimeout(fsCopy._t);
+      fsCopy._t = setTimeout(function () { fsCopy.classList.remove('done'); txt.textContent = 'Копировать'; }, 1600);
+    } else { txt.textContent = 'Не удалось'; }
+  });
+  fsOv.querySelector('.code-fs-close').addEventListener('click', closeFs);
+  fsOv.addEventListener('click', function (e) { if (e.target === fsOv) closeFs(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && fsOv.classList.contains('open')) closeFs(); });
+
   const modal = document.getElementById('modal');
   const mTitle = document.getElementById('modal-title');
   const mBody = document.getElementById('modal-body');
@@ -185,7 +238,7 @@ function wire() {
   const empty = document.getElementById('empty');
   const blocksRoot = document.getElementById('blocks-root');
   const counter = document.getElementById('pager-counter');
-  const isPhone = () => window.matchMedia('(max-width:560px)').matches;
+  const isPhone = () => window.matchMedia('(max-width:880px)').matches; // пейджер — на всём мобильном диапазоне
   search.addEventListener('input', () => {
     const q = search.value.trim().toLowerCase(); let any = false;
     blocks.forEach((b) => { const hit = !q || b.dataset.name.includes(q); b.classList.toggle('hide', !hit); if (hit) any = true; });
@@ -213,27 +266,35 @@ function wire() {
   if (navClose) navClose.addEventListener('click', closeNav);
   if (backdrop) backdrop.addEventListener('click', closeNav);
 
-  function goToBlock(el) {
-    let last = null, stable = 0, tries = 0;
-    const tick = () => {
-      el.scrollIntoView({ block: 'start', behavior: 'auto' });
-      const top = Math.round(el.getBoundingClientRect().top);
-      if (top === last) { if (++stable >= 2) return; } else { stable = 0; last = top; }
-      if (++tries < 24) setTimeout(tick, 55);
-    };
-    tick();
+  // при клике по пункту меню блокируем scroll-spy, чтобы подсветка не «пробегала»
+  // по промежуточным блокам во время плавной прокрутки к цели
+  let spyLocked = false, spyUnlockT = null;
+  function lockSpy() {
+    spyLocked = true;
+    clearTimeout(spyUnlockT);
+    spyUnlockT = setTimeout(() => { spyLocked = false; }, 1000);
   }
+  window.addEventListener('scrollend', () => { spyLocked = false; });
+
+  // при скролле страницы держим активный пункт видимым внутри самого левого меню (без прокрутки всей страницы)
+  function revealNav(a) {
+    if (!a) return;
+    var cont = a.closest('.rail-inner'); if (!cont) return;
+    var cr = cont.getBoundingClientRect(), ar = a.getBoundingClientRect(), pad = 10;
+    if (ar.top < cr.top + pad) cont.scrollTop -= (cr.top + pad - ar.top);
+    else if (ar.bottom > cr.bottom - pad) cont.scrollTop += (ar.bottom - (cr.bottom - pad));
+  }
+  function goToBlock(el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   navlinks.forEach((a) => a.addEventListener('click', (e) => {
     const el = document.getElementById(a.dataset.target);
     if (!el) return;
     e.preventDefault();
-    if (isPhone()) {
-      el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-    } else {
-      goToBlock(el);
-    }
     navlinks.forEach((x) => x.classList.remove('active'));
     a.classList.add('active');
+    revealNav(a);
+    lockSpy();
+    if (isPhone()) el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    else goToBlock(el);
     if (isMobile()) closeNav();
   }));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
@@ -253,18 +314,37 @@ function wire() {
     if (counter) counter.textContent = (idx + 1) + ' / ' + vis.length;
   }
   const onPagerScroll = () => { if (rafPending) return; rafPending = true; requestAnimationFrame(() => { rafPending = false; updatePager(); }); };
+  function setActiveById(id) {
+    navlinks.forEach((a) => a.classList.remove('active'));
+    const a = byId[id]; if (a) { a.classList.add('active'); revealNav(a); }
+  }
+  // у самого верха/низа страницы IntersectionObserver-полоса не ловит крайние блоки — подсвечиваем их явно, чтобы меню возвращалось в начало/конец
+  let edgePending = false;
+  function edgeSpy() {
+    if (isPhone() || spyLocked) return;
+    const vis = blocks.filter((b) => !b.classList.contains('hide'));
+    if (!vis.length) return;
+    const cont = document.querySelector('.rail-inner');
+    if (window.scrollY <= 4) { setActiveById(vis[0].id); if (cont) cont.scrollTop = 0; } // у верха — меню в самое начало (видны иконки «все блоки» и поиск)
+    else if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) { setActiveById(vis[vis.length - 1].id); if (cont) cont.scrollTop = cont.scrollHeight; } // у низа — меню в самый конец
+  }
+  const onWinScroll = () => { if (edgePending) return; edgePending = true; requestAnimationFrame(() => { edgePending = false; edgeSpy(); }); };
   function setupSpy() {
     if (io) { io.disconnect(); io = null; }
     blocksRoot.removeEventListener('scroll', onPagerScroll);
+    window.removeEventListener('scroll', onWinScroll);
     if (isPhone()) {
       blocksRoot.addEventListener('scroll', onPagerScroll, { passive: true });
       updatePager();
     } else {
       navlinks.forEach((a) => a.classList.remove('active'));
       io = new IntersectionObserver((ents) => {
-        ents.forEach((e) => { if (e.isIntersecting) { navlinks.forEach((a) => a.classList.remove('active')); const a = byId[e.target.id]; if (a) a.classList.add('active'); } });
+        if (spyLocked) return;
+        ents.forEach((e) => { if (e.isIntersecting) { navlinks.forEach((a) => a.classList.remove('active')); const a = byId[e.target.id]; if (a) { a.classList.add('active'); revealNav(a); } } });
       }, { rootMargin: '-18% 0px -72% 0px', threshold: 0 });
       blocks.forEach((b) => io.observe(b));
+      window.addEventListener('scroll', onWinScroll, { passive: true });
+      edgeSpy();
     }
   }
   setupSpy();
@@ -287,4 +367,38 @@ function wire() {
       '<p style="padding:24px;color:#b00">Не удалось загрузить данные. Открой страницу через локальный сервер (Live Server в VS Code) или с сервера — по протоколу file:// браузер блокирует загрузку JSON.</p>';
     console.error(e);
   }
+})();
+
+/* Лайтбокс: клик по картинке-превью блока открывает её на весь экран */
+(function () {
+  var ov = null;
+  function ensure() {
+    if (ov) return ov;
+    ov = document.createElement('div');
+    ov.className = 'img-lightbox';
+    ov.innerHTML = '<img alt=""><button class="img-lightbox-close" type="button" aria-label="Закрыть">×</button>';
+    document.body.appendChild(ov);
+    ov.addEventListener('click', function (e) {
+      if (e.target === ov || e.target.classList.contains('img-lightbox-close')) close();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    return ov;
+  }
+  function open(src) { var o = ensure(); o.querySelector('img').src = src; o.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close() { if (ov) { ov.classList.remove('open'); document.body.style.overflow = ''; } }
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest ? e.target.closest('.block .preview img') : null;
+    if (img && img.src && img.style.visibility !== 'hidden') open(img.src);
+  });
+})();
+
+/* Код в блоках Справочника фокусируется по клику → включается свой скролл (как в превью) */
+(function () {
+  function setup() {
+    document.querySelectorAll('main.canvas .block pre.code').forEach(function (pre) {
+      if (!pre.hasAttribute('tabindex')) pre.setAttribute('tabindex', '0');
+    });
+  }
+  window.addEventListener('load', setup);
+  [400, 1000, 2000].forEach(function (t) { setTimeout(setup, t); });
 })();
