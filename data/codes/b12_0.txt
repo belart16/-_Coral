@@ -6,6 +6,11 @@
         display: flex
     }
 
+    /* блок с картинкой — не ниже 260px, чтобы картинка не сжималась при коротком тексте */
+    .panel:has(> .panel__img) {
+        min-height: 260px
+    }
+
     .panel + .panel {
         margin-top: 24px;
     }
@@ -89,6 +94,11 @@
         position: absolute;
         top: 16px;
         right: 16px
+    }
+
+    .panel--reverse .panel__label {
+        right: unset;
+        left: 16px
     }
 
     @media screen and (max-width: 1024px) {

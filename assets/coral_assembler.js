@@ -105,6 +105,7 @@
     var img = c.img != null ? c.img : '';
     var title = c.title != null ? c.title : ''; // ссылка в заголовке карточки остаётся в заголовке
     var text = c.text != null ? c.text : '';
+    var alt = String(title).replace(/<[^>]+>/g, '').replace(/"/g, '&quot;').trim(); // подпись картинки — название карточки (поиск по картинкам, экранный доступ)
     // заголовок карточки: по умолчанию <p>, при заданном уровне — <hN>
     var titleTag = c.level
       ? '<h' + c.level + ' class="reason-card__title"> ' + title + ' </h' + c.level + '>'
@@ -116,8 +117,7 @@
     var body = list.map(function (p) { return '                        <p class="text"> ' + p + ' </p>'; }).join('\n');
     return '                <!-- Карточка -->\n' +
       '                <div class="reason-card">\n' +
-      '                    <div class="reason-card__img" style="background-image: url(' + img + ');">\n' +
-      '                    </div>\n' +
+      '                    <img class="reason-card__img" src="' + img + '" alt="' + alt + '">\n' +
       '                    <div class="reason-card__body">\n' +
       titleLine +
       body + '\n' +
