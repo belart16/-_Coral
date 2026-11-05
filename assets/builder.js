@@ -2642,12 +2642,13 @@
     if (sec.heading) return { badge: 'H' + sec.heading.level, title: stripTags(sec.heading.text), note: '' };
     return { badge: '¶', title: 'Текст без заголовка', note: '' };
   }
-  function tzItemHtml(it) {
+  // kind — тип блока, куда идёт строка: в «Тексте с картинкой» и «Текстовом блоке» отдельная ссылка становится кнопкой
+  function tzItemHtml(it, kind) {
     if (it.type === 'p') return '<p class="tz-p">' + escLinks(it.text) + '</p>';
     if (it.type === 'sub') return '<div class="tz-sub"><span class="tz-badge tz-badge-sm">H' + it.level + '</span>' + escLinks(it.text) + '</div>';
     if (it.type === 'label') return '<div class="tz-label">' + esc(it.text) + '</div>';
     if (it.type === 'image') return '<div class="tz-img">🖼 <a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.url) + '</a>' + (it.src ? '' : '<span class="tz-atom-note">заглушка — заменить вручную</span>') + '</div>';
-    if (it.type === 'link') return '<div class="tz-img tz-linkatom">🔗 <a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.url) + '</a><span class="tz-atom-note">информационная ссылка — в блок не идёт</span></div>';
+    if (it.type === 'link') return '<div class="tz-img tz-linkatom">🔗 <a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.url) + '</a><span class="tz-atom-note">' + (kind === 'panel' || kind === 'textpanel' ? 'идёт в кнопку «Выбрать тур»' : 'информационная ссылка — в блок не идёт') + '</span></div>';
     if (it.type === 'list') { var tag = it.ordered ? 'ol' : 'ul'; var st = (it.ordered && it.start && it.start !== 1) ? ' start="' + it.start + '"' : ''; return '<' + tag + ' class="tz-list"' + st + '>' + it.items.map(function (x) { return '<li>' + escLinks(x) + '</li>'; }).join('') + '</' + tag + '>'; }
     if (it.type === 'table') {
       var cell = function (c) { return escLinks(c).replace(/&lt;br\s*\/?&gt;/gi, '<br>'); };
@@ -2657,7 +2658,7 @@
     }
     return '';
   }
-  function tzItemsHtml(items) { return items.map(tzItemHtml).join(''); }
+  function tzItemsHtml(items) { return items.map(function (it) { return tzItemHtml(it); }).join(''); }
   // Разметка секции в режиме разделения: части с цветовой меткой, выбор типа и разрывы между атомами
   function splitMarkHtml(sec, mp, si) {
     var atoms = sec.items || [], bounds = [0].concat(mp.cuts || []).concat([atoms.length]);
@@ -2701,7 +2702,7 @@
           (j === 0 && headHtml ? headHtml : '');
       for (var a = start; a < end; a++) {
         if (a > start) out += '<div class="tz-mk-split" data-addcut="' + a + '" data-sec="' + si + '"><span class="tz-mk-split-lbl">＋ разделить здесь</span></div>';
-        out += '<div class="tz-mk-atom"><button class="tz-mk-atomdel" data-delatom="' + a + '" data-sec="' + si + '" title="Удалить эту строку из импорта">' + IC.close + '</button>' + tzItemHtml(atoms[a]) + '</div>';
+        out += '<div class="tz-mk-atom"><button class="tz-mk-atomdel" data-delatom="' + a + '" data-sec="' + si + '" title="Удалить эту строку из импорта">' + IC.close + '</button>' + tzItemHtml(atoms[a], mp.kinds[j]) + '</div>';
       }
       out += '</div></div>';
     }
@@ -2811,7 +2812,7 @@
   }
 
   function clearImport() {
-    tzState.result = null; tzState.fileName = ''; importMap = {}; tzUnlocked = {}; gapUnlocked = {};
+    tzState.result = null; tzState.fileName = ''; tzState.rawText = ''; importMap = {}; tzUnlocked = {}; gapUnlocked = {}; // rawText — иначе смена шаблона пересоберёт очищенное
     state.blocks = state.blocks.filter(function (b) { return !b._id; }); refreshAll();
     var r = document.getElementById('tz-result'); if (r) r.innerHTML = '';
     var t = document.getElementById('tz-text'); if (t) t.value = '';
