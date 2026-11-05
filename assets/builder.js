@@ -2745,7 +2745,7 @@
         '<span class="tz-tpl-row-s">' + esc(tplBlockPreview(b)) + '</span></div>';
     }).join('');
     var seq = '<div class="tz-tpl-seq"><div class="tz-tpl-seq-h">Блоки страницы (по шаблону)</div>' + rows + '</div>';
-    host.innerHTML = head + bar + seq;
+    host.innerHTML = head + tzMetaHtml(res) + bar + seq; // шапка страницы (H1, Title, Description, ссылка) — как у «Статьи»
   }
   // разрыв между секциями с кнопкой «вставить документ» (afterSi: -1 — в начало, иначе после секции afterSi)
   function tzInsertGap(afterSi) {

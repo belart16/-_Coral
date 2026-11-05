@@ -135,6 +135,10 @@
       if (dm) { var dv = dm[1].trim(); if (!dv) { var mb2 = metaValueBelow(i); if (mb2) { dv = mb2.text; i = mb2.at; } } if (dv) out.meta.description = dv; continue; }
       // URL страницы в шапке: либо голая ссылка, либо с меткой «URL:» перед ней (как Title:/Description:)
       if (!seenHeading && !/text\.ru\/antiplagiat/i.test(line) && !imageLinkOf(line) && classifyUrl(line.replace(/^url\s*[:—-]\s*/i, '').trim()).type !== 'image') { /* сток/картинка до H1 — не адрес страницы */ var um = line.match(/^(?:url\s*[:—-]\s*)?https?:\/\/[^\/\s]+\/([^\s?#]+)/i); if (um) { out.meta.url = um[1].replace(/\/+$/, ''); continue; } }
+      // «url: …» — адрес страницы, где бы ни стоял (в «Расширении структуры» он идёт после H1).
+      // Word рвёт такую ссылку на куски с чужим href, поэтому берём видимый текст, а не адрес ссылки.
+      var ul = line.match(/^url\s*[:—-]\s*(.+)$/i);
+      if (ul) { var up = ul[1].replace(/<[^>]+>/g, '').replace(/\s+/g, '').match(/^https?:\/\/[^\/]+\/([^?#]+)/i); if (up) { if (!out.meta.url) out.meta.url = up[1].replace(/\/+$/, ''); continue; } }
       var h = asHeading(rawLine);
 
       if (h) {
@@ -158,6 +162,12 @@
         var trows = [], jj = i;
         while (jj < lines.length && TABLE_ROW_RE.test(lines[jj].trim())) { trows.push(splitRow(lines[jj].trim())); jj++; }
         trows = trows.filter(function (cells) { return !isSepRow(cells); }); // строку-разделитель «| --- | --- |» убираем
+        // таблица-шапка «| title | description |» + строка значений — это мета страницы, а не блок «Таблица»
+        var hdr = trows.length === 2 ? trows[0].map(function (c) { return c.replace(/<[^>]+>/g, '').trim().toLowerCase(); }) : [];
+        if (hdr.length && hdr.every(function (c) { return c === 'title' || c === 'description'; })) {
+          hdr.forEach(function (c, k) { var v = String(trows[1][k] || '').replace(/<[^>]+>/g, '').trim(); if (v && !out.meta[c]) out.meta[c] = v; });
+          i = jj - 1; continue;
+        }
         if (trows.length) {
           var tblItem = { type: 'table', header: trows[0], rows: trows.slice(1) };
           // Таблица остаётся В ТЕКУЩЕЙ секции, если до неё там были только абзацы (заголовок + вводный текст):
