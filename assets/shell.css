@@ -75,13 +75,13 @@ html::-webkit-scrollbar-thumb:hover{ background: #aebdc9 !important; }
   .rail-brand{ display:block; flex:none; width:26px; height:26px; margin:7px 6px 13px; overflow:hidden; cursor:pointer; transition:width .30s cubic-bezier(.22,.9,.3,1); }
   .rail:hover .rail-brand, body.rail-pinned .rail-brand{ width:109px; }
   .rail-brand-logo{ height:26px; width:auto; max-width:none; display:block; }
-  .rail-inner{ overflow-y:auto; overflow-x:hidden; padding-right:2px; scrollbar-width:none; -ms-overflow-style:none; }
+  .rail-inner{ overflow-y:auto; overflow-x:hidden; scrollbar-width:none; -ms-overflow-style:none; }
   .rail-inner::-webkit-scrollbar{ width:0; height:0; display:none; }
 
   /* заголовок-капсула рельса (виден в свёрнутом виде как иконка); закреплён сверху при прокрутке списка */
   .rail-cap{
     position: sticky; top: 0; z-index: 2;
-    display:flex; align-items:center; height:40px; padding:0 10px; margin-bottom:6px;
+    display:flex; align-items:center; height:40px; padding:0 9px; margin-bottom:6px;
     font-size:11px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:var(--muted);
     white-space:nowrap; background: rgba(247,249,251,.96);
   }
@@ -106,7 +106,7 @@ html::-webkit-scrollbar-thumb:hover{ background: #aebdc9 !important; }
   }
 
   /* значки-чипы пунктов */
-  .rail .nav-link:not(.hide){ display: flex; align-items: center; gap: 11px; padding: 7px 9px; }
+  .rail .nav-link:not(.hide){ display: flex; align-items: center; gap: 7px; padding: 7px 9px 7px 4px; border-radius: 13px; } /* радиус = радиус чипа 9 + отступ 4: углы выделения и чипа идут параллельно */
   .nav-ico{
     flex: none; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
     background: var(--tint); color: var(--brand); font: 800 11.5px/1 'Manrope', sans-serif; letter-spacing: .2px;
@@ -116,7 +116,6 @@ html::-webkit-scrollbar-thumb:hover{ background: #aebdc9 !important; }
 
   /* в свёрнутом виде: только чип по центру — убираем текст из потока, рамку/фон-пилюлю */
   body:not(.rail-pinned) .rail:not(:hover) .nav-txt{ display: none; }
-  body:not(.rail-pinned) .rail:not(:hover) .nav-link:not(.hide){ justify-content: center; gap: 0; padding-left: 0; padding-right: 0; }
   body:not(.rail-pinned) .rail:not(:hover) .nav-link{ background: transparent !important; }
   body:not(.rail-pinned) .rail:not(:hover) .nav-link.active .nav-ico{ background: var(--brand); color: #fff; }
 
@@ -134,8 +133,9 @@ html::-webkit-scrollbar-thumb:hover{ background: #aebdc9 !important; }
   .rail-pin.is-active{ color: #fff; background: var(--brand-d); border-color: var(--brand-d); }
   .rail-pin svg{ width: 16px; height: 16px; }
 
-  .rail .search{ margin:0 2px 12px; }
-  .rail #nav{ padding:0 2px; }
+  .rail .search{ margin:0 0 12px; }
+  /* единая сетка рельса (от внутреннего края): ось иконок 19px — центр свёрнутого рельса, начало подписей 41px */
+  .rail .nav-grp-title{ padding-left: 9px; }
 
   /* ---------- ХОЛСТ ---------- */
   main.canvas{
