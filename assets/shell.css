@@ -1,0 +1,197 @@
+/* ============================================================
+   Каркас справочника: рельс · холст
+   Корпоративные цвета Coral: --brand #0092D0 / --brand-d #0B3C5D
+   ============================================================ */
+
+:root{
+  --glass: rgba(255,255,255,.64);
+  --glass-strong: rgba(255,255,255,.78);
+  --glass-brd: rgba(11,60,93,.12);
+  --glass-shadow: 0 10px 30px -14px rgba(11,60,93,.30), 0 2px 8px -4px rgba(11,60,93,.14);
+  --rail-w: 268px;
+  --rail-min: 60px;
+  --shell-gap: 18px;
+  --shell-pad: 18px;
+  --sticky-top: 18px;                 /* равен верхнему отступу .shell, чтобы рельс не сдвигался при прокрутке */
+}
+
+/* фон с лёгким фирменным свечением, чтобы стекло было «стеклом» */
+body{
+  background:
+    radial-gradient(1100px 560px at 6% -12%, rgba(0,146,208,.12), transparent 60%),
+    radial-gradient(880px 520px at 102% -6%, rgba(11,60,93,.08), transparent 55%),
+    var(--page);
+  background-attachment: fixed;
+}
+
+.app{ min-height:100vh; }
+
+/* рельс — колонка: логотип сверху, под ним прокручиваемый список */
+.rail{ display:flex; flex-direction:column; }
+.rail-inner{ flex:1 1 auto; min-height:0; }
+
+/* Скрываем видимые полоски скролла во всём проекте (скролл остаётся, полоска — нет).
+   !important — чтобы перебить точечные правила scrollbar в styles.css (html, aside, pre.code) */
+*{ scrollbar-width: none !important; -ms-overflow-style: none !important; }
+*::-webkit-scrollbar{ width: 0 !important; height: 0 !important; display: none !important; }
+
+/* …кроме ГЛАВНОЙ полосы прокрутки страницы — она видимая, аккуратная, серая, СТАНДАРТНОГО размера для сайтов.
+   Внутренние окна (код, рельс, превью, списки) остаются без полос. html перебивает правило * выше по специфичности.
+   scrollbar-width:auto + явные правила ::-webkit-scrollbar → классическая полоса фиксированной ширины (не «fluent»,
+   которая расширяется при наведении). scrollbar-color НЕ задаём — именно он включает расширяющуюся fluent-полосу. */
+html{ scrollbar-width: auto !important; }
+html::-webkit-scrollbar{ width: 15px !important; height: 15px !important; display: block !important; }
+html::-webkit-scrollbar-track{ background: transparent !important; }
+html::-webkit-scrollbar-thumb{ background: #c3cfd9 !important; border-radius: 999px !important; border: 4px solid transparent !important; background-clip: padding-box !important; }
+html::-webkit-scrollbar-thumb:hover{ background: #aebdc9 !important; }
+
+/* Кнопка-закрепление рельса не нужна на телефоне (там рельс — выезжающая панель) */
+@media (max-width: 880px){ .rail-pin{ display: none !important; } }
+
+/* ============================================================
+   ДЕСКТОП: сетка рельс | холст | превью
+   ============================================================ */
+@media (min-width: 881px){
+
+  .shell{
+    display:grid; align-items:start; gap: var(--shell-gap);
+    padding: var(--shell-gap) 16px 40px;
+    grid-template-columns: auto minmax(0,1fr);          /* Справочник: рельс + холст */
+  }
+
+  /* ---------- КОНТЕКСТНЫЙ РЕЛЬС ---------- */
+  .rail{
+    position: sticky; top: var(--sticky-top);
+    width: var(--rail-min);
+    height: calc(100vh - var(--sticky-top) - 20px);
+    background: var(--glass); border:1px solid var(--glass-brd);
+    border-radius: 18px; box-shadow: var(--glass-shadow);
+    -webkit-backdrop-filter: blur(20px) saturate(1.7); backdrop-filter: blur(20px) saturate(1.7);
+    padding: 10px; overflow: hidden;
+    transition: width .30s cubic-bezier(.22,.9,.3,1), top .3s cubic-bezier(.22,.9,.3,1), height .3s cubic-bezier(.22,.9,.3,1);
+  }
+  .rail:hover, body.rail-pinned .rail{ width: var(--rail-w); overflow:hidden; }
+  /* логотип: свёрнутый рельс показывает только кружок (левый квадрат 474×474 в SVG), раскрытый — логотип целиком */
+  .rail-brand{ display:block; flex:none; width:26px; height:26px; margin:7px 6px 13px; overflow:hidden; cursor:pointer; transition:width .30s cubic-bezier(.22,.9,.3,1); }
+  .rail:hover .rail-brand, body.rail-pinned .rail-brand{ width:109px; }
+  .rail-brand-logo{ height:26px; width:auto; max-width:none; display:block; }
+  .rail-inner{ overflow-y:auto; overflow-x:hidden; padding-right:2px; scrollbar-width:none; -ms-overflow-style:none; }
+  .rail-inner::-webkit-scrollbar{ width:0; height:0; display:none; }
+
+  /* заголовок-капсула рельса (виден в свёрнутом виде как иконка); закреплён сверху при прокрутке списка */
+  .rail-cap{
+    position: sticky; top: 0; z-index: 2;
+    display:flex; align-items:center; height:40px; padding:0 10px; margin-bottom:6px;
+    font-size:11px; font-weight:800; letter-spacing:.7px; text-transform:uppercase; color:var(--muted);
+    white-space:nowrap; background: rgba(247,249,251,.96);
+  }
+  .rail-cap::before{
+    content:""; flex:none; width:20px; height:20px; margin-right:12px; border-radius:6px;
+    background:var(--brand); opacity:.9;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1.5'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='4' width='7' height='7' rx='1.5'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1.5'/%3E%3Crect x='14' y='14' width='7' height='7' rx='1.5'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+
+  /* В свёрнутом рельсе видны значки-чипы каждого пункта (структура);
+     скрыт только текст/подписи групп/поиск — они появляются при раскрытии. */
+  /* Свёрнутый рельс без пустот: поиск → лупа, заголовки групп → короткая подпись (ГС, КС…) */
+  .grp-ab{ display: none; }
+  body:not(.rail-pinned) .rail:not(:hover) .grp-full{ display: none; }
+  body:not(.rail-pinned) .rail:not(:hover) .grp-ab{ display: block; text-align: center; }
+  body:not(.rail-pinned) .rail:not(:hover) .nav-grp-title{ padding: 6px 0 5px; }
+  body:not(.rail-pinned) .rail:not(:hover) .search{
+    display: block; width: 30px; height: 30px; margin: 0 auto 10px; padding: 0; border-radius: 9px;
+    border: 0; color: transparent; text-indent: -9999px; box-shadow: none;
+    background: var(--tint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230092D0' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4-4'/%3E%3C/svg%3E") center/15px no-repeat;
+  }
+
+  /* значки-чипы пунктов */
+  .rail .nav-link:not(.hide){ display: flex; align-items: center; gap: 11px; padding: 7px 9px; }
+  .nav-ico{
+    flex: none; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+    background: var(--tint); color: var(--brand); font: 800 11.5px/1 'Manrope', sans-serif; letter-spacing: .2px;
+  }
+  .nav-txt{ white-space: nowrap; overflow: hidden; }
+  .nav-link.active .nav-ico{ background: rgba(255,255,255,.22); color: #fff; }
+
+  /* в свёрнутом виде: только чип по центру — убираем текст из потока, рамку/фон-пилюлю */
+  body:not(.rail-pinned) .rail:not(:hover) .nav-txt{ display: none; }
+  body:not(.rail-pinned) .rail:not(:hover) .nav-link:not(.hide){ justify-content: center; gap: 0; padding-left: 0; padding-right: 0; }
+  body:not(.rail-pinned) .rail:not(:hover) .nav-link{ background: transparent !important; }
+  body:not(.rail-pinned) .rail:not(:hover) .nav-link.active .nav-ico{ background: var(--brand); color: #fff; }
+
+  /* кнопка-закрепление — внутри рельса, справа от «Блоки»; видна только когда рельс раскрыт */
+  .rail-pin{
+    position: absolute; top: 15px; right: 14px; z-index: 3;
+    width: 30px; height: 30px; border-radius: 9px; cursor: pointer;
+    display: grid; place-items: center; color: var(--muted);
+    background: transparent; border: 1px solid transparent;
+    opacity: 0; pointer-events: none;
+    transition: opacity .18s, color .15s, background .15s;
+  }
+  .rail:hover .rail-pin, body.rail-pinned .rail-pin{ opacity: 1; pointer-events: auto; }
+  .rail-pin:hover{ color: var(--brand); background: var(--tint); }
+  .rail-pin.is-active{ color: #fff; background: var(--brand-d); border-color: var(--brand-d); }
+  .rail-pin svg{ width: 16px; height: 16px; }
+
+  .rail .search{ margin:0 2px 12px; }
+  .rail #nav{ padding:0 2px; }
+
+  /* ---------- ХОЛСТ ---------- */
+  main.canvas{
+    max-width:none; width:auto; margin:0; min-width:0;
+    padding: 4px 6px 40px;
+  }
+  .canvas .hero{ margin-bottom: 20px; }
+
+  /* Картинки-превью блоков: не тянем на всю ширину блока и не раздуваем.
+     Рамка обнимает картинку, высота ограничена; полный размер — по клику (лайтбокс). */
+  /* Превью-картинки: одинаковая ширина у всех (как у «Плашек с галочками»), высота — по аспекту.
+     Фон вокруг — как у окна кода, отделяет картинку; свободное место по бокам залито этим фоном. */
+  .canvas .block .preview{
+    display: flex; justify-content: center; align-items: flex-start;
+    width: 100%; max-width: none; padding: 20px;
+    background: var(--code-bg); border: 1px solid var(--code-line); border-radius: 14px;
+  }
+  .canvas .block .preview img{
+    width: 1140px; max-width: 100%; height: auto;
+    border-radius: 8px; box-shadow: var(--shadow); cursor: zoom-in;
+  }
+
+  /* Код в Справочнике: окно под размер шаблона (до предела), тянется по высоте; скролл — только по клику */
+  .canvas .block pre.code{ height: auto; min-height: 0; max-height: 500px; overflow: hidden; resize: vertical; cursor: default; }
+  .canvas .block pre.code:focus{ overflow: auto; outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(0,146,208,.16); }
+}
+
+/* ============================================================
+   МОБИЛЬНЫЙ: без шапки и нижних панелей.
+   Страница сразу открыта на первом блоке, блоки листаются свайпом,
+   вся навигация — в кнопке справа внизу (выезжающее меню описано в styles.css @max-880)
+   ============================================================ */
+@media (max-width: 880px){
+  .shell{ display:block; padding:0; }
+  main.canvas{ max-width:none; }
+}
+
+/* ---------- Лайтбокс: картинка блока на весь экран по клику ---------- */
+.img-lightbox{
+  position: fixed; inset: 0; z-index: 200; display: none;
+  align-items: center; justify-content: center; padding: 28px;
+  background: rgba(11,32,45,.82); cursor: zoom-out;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.img-lightbox.open{ display: flex; }
+.img-lightbox img{
+  max-width: 94vw; max-height: 90vh; width: auto; height: auto;
+  border-radius: 12px; box-shadow: 0 30px 90px rgba(0,0,0,.55); cursor: default;
+}
+.img-lightbox-close{
+  position: absolute; top: 18px; right: 22px; width: 46px; height: 46px; border-radius: 50%;
+  border: 0; background: rgba(255,255,255,.16); color: #fff; font-size: 24px; line-height: 1; cursor: pointer;
+  display: grid; place-items: center; transition: background .15s;
+}
+.img-lightbox-close:hover{ background: rgba(255,255,255,.3); }
+
+@media (prefers-reduced-motion: reduce){
+  .rail, .rail-brand, .rail .search, .rail #nav, .rail-pin{ transition:none !important; }
+}

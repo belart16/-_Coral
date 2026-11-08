@@ -1,0 +1,161 @@
+<style>
+    .contacts {
+        justify-content: space-between;
+        gap: 24px;
+        display: flex
+    }
+    
+    @media screen and (max-width: 1024px) {
+        .contacts {
+            flex-direction: column
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        .contacts {
+            flex-direction: column;
+            gap: 16px
+        }
+    }
+    
+    .contacts__block {
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, .06);
+        border-radius: 16px;
+        align-items: center;
+        padding: 24px;
+        display: flex
+    }
+    
+    @media screen and (max-width: 768px) {
+        .contacts__block {
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px
+        }
+    }
+    
+    .contacts__info {
+        flex-direction: column;
+        align-items: flex-start;
+        display: flex
+    }
+    
+    .contacts__icon {
+        aspect-ratio: 1;
+        background: #e5f7ff;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        width: 56px;
+        height: 56px;
+        margin-right: 16px;
+        display: flex
+    }
+    
+    @media screen and (max-width: 768px) {
+        .contacts__icon {
+            width: 48px;
+            height: 48px
+        }
+    }
+    
+    .contacts__tel {
+        color: #0093d0;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px
+    }
+    
+    @media screen and (max-width: 768px) {
+        .contacts__tel {
+            font-size: 16px
+        }
+    }
+    
+    a.contacts__link {
+        color: #fff;
+        background-color: #0092d0;
+        border-radius: 48px;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        margin-left: 24px;
+        padding-left: 16px;
+        padding-right: 16px;
+        font-size: 16px;
+        line-height: 24px;
+        transition: all .3s;
+        display: flex;
+        text-decoration: none !important
+    }
+    
+    @media screen and (max-width: 1024px) {
+        a.contacts__link {
+            margin-left: auto
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        a.contacts__link {
+            height: 30px;
+            padding-left: 14px;
+            padding-right: 14px;
+            font-size: 12px
+        }
+    }
+    
+    @media screen and (max-width: 428px) {
+        a.contacts__link {
+            width: 100%;
+            margin-left: 0
+        }
+    }
+    
+    a.contacts__link:hover {
+        background: #077dad
+    }
+    
+    .contacts__text {
+        margin: 0;
+        font-size: 16px;
+        line-height: 24px
+    }
+    
+    @media screen and (max-width: 768px) {
+        .contacts__text {
+            font-size: 12px
+        }
+    }
+    
+</style>
+
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <h2 class="title-1 mb-24">Всегда на связи с вами</h2>
+            <div class="contacts">
+                <div class="contacts__block">
+                    <div class="contacts__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.46731 19.8463C7.46763 19.8465 7.46792 19.8467 8 19L7.46792 19.8467C7.79319 20.0511 8.20681 20.0511 8.53208 19.8467L8 19C8.53208 19.8467 8.53237 19.8465 8.53269 19.8463L8.53347 19.8458L8.53549 19.8445L8.54146 19.8408L8.56087 19.8283C8.57708 19.8179 8.59977 19.8032 8.6285 19.7843C8.68596 19.7465 8.76767 19.6918 8.87015 19.6208C9.075 19.4789 9.36353 19.2716 9.70787 19.0036C10.395 18.4689 11.3126 17.6865 12.233 16.6947C14.0517 14.7349 16 11.8279 16 8.3125C16 3.76324 12.459 0 8 0C3.54101 0 0 3.76324 0 8.3125C0 11.8279 1.94835 14.7349 3.76699 16.6947C4.68742 17.6865 5.60499 18.4689 6.29213 19.0036C6.63647 19.2716 6.925 19.4789 7.12985 19.6208C7.23234 19.6918 7.31404 19.7465 7.3715 19.7843C7.40023 19.8032 7.42292 19.8179 7.43913 19.8283L7.45854 19.8408L7.46451 19.8445L7.46654 19.8458L7.46731 19.8463ZM8 5C7.72386 5 7.5 5.22386 7.5 5.5V6H5.5V5.5C5.5 4.11929 6.61929 3 8 3C9.38071 3 10.5 4.11929 10.5 5.5V6.19722C10.5 7.03311 10.0822 7.81369 9.38675 8.27735L9.22265 8.38675C9.08355 8.47948 9 8.6356 9 8.80278V9.5H7V8.80278C7 7.96689 7.41775 7.18631 8.11325 6.72265L8.27735 6.61325C8.41645 6.52052 8.5 6.3644 8.5 6.19722V5.5C8.5 5.22386 8.27614 5 8 5ZM7 11.5V12.5H9V11.5H7Z" fill="#0092D0"></path>
+                        </svg> </div>
+                    <div class="contacts__info"> <span class="contacts__tel">+7 495 502 12 06</span>
+                        <p class="contacts__text">Отдел по работе с частными клиентами, вопросы по заказу</p>
+                    </div> <a class="contacts__link" href="tel:+74955021206">Позвонить</a>
+                </div>
+                <div class="contacts__block">
+                    <div class="contacts__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M3 7.5C1.34315 7.5 0 8.84315 0 10.5V15C0 16.6569 1.34315 18 3 18H3.5C5.15685 18 6.5 16.6569 6.5 15V10.5C6.5 8.84315 5.15685 7.5 3.5 7.5H3Z" fill="#0092D0"></path>
+                            <path d="M14.5 7.5C12.8431 7.5 11.5 8.84315 11.5 10.5V15C11.5 16.6569 12.8431 18 14.5 18H15C16.6569 18 18 16.6569 18 15L18 10.5C18 8.84315 16.6569 7.5 15 7.5H14.5Z" fill="#0092D0"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 2C4.68629 2 2 4.68629 2 8V12.5H0V8C0 3.58172 3.58173 -2.6226e-06 8 0L10 1.19209e-06C14.4183 3.8147e-06 18 3.58173 18 8V12.5H16V8C16 4.68629 13.3137 2 10 2L8 2Z" fill="#0092D0"></path>
+                        </svg> </div>
+                    <div class="contacts__info"> <span class="contacts__tel">+7 495 258 67 08</span>
+                        <p class="contacts__text">Горячая линия для туристов 24/7, экстренные ситуации</p>
+                    </div> <a class="contacts__link" href="tel:+74952586708">Позвонить</a>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

@@ -1,0 +1,137 @@
+<style>
+    .airline-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 20px;
+        overflow: hidden
+    }
+    
+    .airline-table thead {
+        background-color: #0092d0
+    }
+    
+    .airline-table th {
+        color: #fff;
+        text-align: left;
+        padding: 16px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px
+    }
+    
+    .airline-table td {
+        padding: 16px 20px;
+        font-size: 16px;
+        line-height: 24px;
+        border-top: 1px solid rgba(0, 0, 0, .06);
+        vertical-align: top
+    }
+    
+    .airline-table tbody tr:nth-child(even) {
+        background-color: #f5f5f8
+    }
+    
+    .airline-table__wrap {
+        overflow-x: auto;
+        border-radius: 20px
+    }
+    
+    @media screen and (max-width: 768px) {
+    
+        .airline-table th,
+        .airline-table td {
+            padding: 12px 14px;
+            font-size: 14px;
+            line-height: 20px
+        }
+    }
+    
+</style>
+
+<section class="coral">
+    <article>
+        <div class="wrapper mt-1">
+            <h2 class="title-1 mb-24"> Заголовок секции </h2>
+            <!--p class="text mb-24"> Текст </p-->
+            <div class="airline-table__wrap">
+                <table class="airline-table">
+                    <thead>
+                        <tr>
+                            <th>Авиакомпания</th>
+                            <th>Параметры ручной клади (см)</th>
+                            <th>Вес ручной клади (кг)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>«Аэрофлот»</td>
+                            <td>55х40х25</td>
+                            <td>10 или 15 — в зависимости от класса</td>
+                        </tr>
+                        <tr>
+                            <td>«Россия»</td>
+                            <td>Рейсы: SU 6001-6999 55х40х25<br>Рейсы SU/FV 5501-5999 — 55х40х25</td>
+                            <td>Рейсы: SU 6001-6999: 10 или 15 — в зависимости от класса<br>Рейсы SU/FV 5501-5999: 5 или 10 в зависимости от класса</td>
+                        </tr>
+                        <tr>
+                            <td>«Уральские авиалинии»</td>
+                            <td>Обычно 55х40х25, а в бизнесе и комфорте — 2 сумки такой величины</td>
+                            <td>10 или 15 — в зависимости от класса</td>
+                        </tr>
+                        <tr>
+                            <td>S7 Airlines</td>
+                            <td>55х40х23 и 90х40х23 (для музыкального инструмента)</td>
+                            <td>10 или 15 — в зависимости от класса</td>
+                        </tr>
+                        <tr>
+                            <td>«Победа»</td>
+                            <td>Габариты всех личных вещей в совокупности — 36х30х27, либо ручная кладь до 15×36×30 см</td>
+                            <td>Нет</td>
+                        </tr>
+                        <tr>
+                            <td>Red Wings Airlines</td>
+                            <td>40х30х20, за доплату — 55х40х25</td>
+                            <td>5 или 10 (за доплату)</td>
+                        </tr>
+                        <tr>
+                            <td>Smartavia</td>
+                            <td>40х30х20</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>Utair</td>
+                            <td>40х30х20, в премиуме и евробизнесе — дополнительная сумка на 55х40х25</td>
+                            <td>5, в премиуме и евробизнесе — 5+10</td>
+                        </tr>
+                        <tr>
+                            <td>Nordwind</td>
+                            <td>40х30х20, для бизнеса и премиума — 50х40х20</td>
+                            <td>10 или 10+5 — в зависимости от класса</td>
+                        </tr>
+                        <tr>
+                            <td>AirSerbia</td>
+                            <td>23х40х55</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>Turkish Airlines</td>
+                            <td>23х40х55, а в бизнесе 2 сумки такого размера</td>
+                            <td>8 и 8+8 — в зависимости от класса</td>
+                        </tr>
+                        <tr>
+                            <td>Pegasus Airlines</td>
+                            <td>55х40х20</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>Emirates</td>
+                            <td>55х38х22</td>
+                            <td>В экономе — 7, в премиум-экономе — 10, в бизнесе и премиум-классе — две сумки по 7</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+</section>

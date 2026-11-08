@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Справочник кода · библиотека блоков · Coral Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/shell.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- РАБОЧИЙ СТОЛ: рельс | холст -->
+  <div class="shell" id="shell">
+
+    <!-- КОНТЕКСТНЫЙ РЕЛЬС -->
+    <aside id="sidebar" class="rail">
+      <button class="nav-close" id="nav-close" type="button" aria-label="Закрыть меню"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <button class="rail-pin" id="rail-pin" type="button" aria-pressed="false" title="Закрепить панель открытой">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6M10 4l-.7 6.2a3 3 0 0 1-1 1.9L6 14h12l-2.3-1.9a3 3 0 0 1-1-1.9L14 4M12 14v6"/></svg>
+      </button>
+      <!-- Логотип: на компьютере сворачивается вместе с рельсом до кружка -->
+      <div class="rail-brand"><img class="rail-brand-logo" src="assets/coral_mark.svg" alt="Coral Travel"></div>
+      <div class="rail-inner">
+        <!-- Справочник: поиск + навигация -->
+        <div class="rail-ref">
+          <div class="rail-cap">Справочник</div>
+          <input class="search" id="search" type="search" placeholder="Поиск блока…" autocomplete="off">
+          <nav id="nav"></nav>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ХОЛСТ -->
+    <main id="canvas" class="canvas">
+      <div id="blocks-root"></div>
+      <div class="empty" id="empty">Ничего не найдено.</div>
+    </main>
+
+  </div>
+</div>
+
+<!-- Модалка инструкции -->
+<div class="modal-overlay" id="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-head">
+      <h3 class="modal-title" id="modal-title"></h3>
+      <button class="modal-close" id="modal-close" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Мобильная навигация справочника (выезжающий список блоков) -->
+<button class="nav-fab" id="nav-toggle" type="button" aria-label="Открыть навигацию и поиск" aria-controls="sidebar" aria-expanded="false">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true">
+    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</button>
+<div class="nav-backdrop" id="nav-backdrop"></div>
+<div class="pager-counter" id="pager-counter" aria-hidden="true"></div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
