@@ -50,7 +50,7 @@
 
 <section class="coral">
     <article>
-        <div class="wrapper mt-1">
+        <div class="wrapper">
             <h2 class="title-1 mb-24">
                 Часто задаваемые вопросы
             </h2>

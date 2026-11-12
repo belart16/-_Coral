@@ -29,7 +29,7 @@
 
 <section class="coral">
     <article>
-        <div class="wrapper mt-1">
+        <div class="wrapper">
             <h2 class="title-1 mb-24"> Заголовок </h2>
             <p class="text mb-24"> Шумный, яркий и колоритный Стамбул хочется рассматривать в подробностях. Однако иногда он утомляет, и тогда наступает время для морской поездки на Адалар. Обычно сюда едут, чтобы: </p>
             <div class="grid-auto grid-auto--4">

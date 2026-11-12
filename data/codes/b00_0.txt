@@ -256,34 +256,8 @@
             padding: 0!important;
         }
     }
-    /* ===================== Дополнения конструктора =====================
-    Всё выше — шаблон общих стилей Coral без изменений.
-    Ниже — то, на чём держатся блоки конструктора. */
 
-    /* Отступы между секциями: wrapper 12px сверху/снизу + .mt-1 у самостоятельных секций.
-    Части одной секции идут без .mt-1 — вплотную (24px). Итог как в шаблоне: 80px десктоп / 60px мобильный. */
-    @media screen and (min-width: 769px) {
-        section > article .wrapper {
-            padding-top: 12px;
-            padding-bottom: 12px
-        }
-    }
-
-    .mt-1 {
-        margin-top: 56px
-    }
-
-    @media screen and (max-width: 768px) {
-        .mt-1 {
-            margin-top: 0
-        }
-    }
-
-    section:has(.contacts) .wrapper {
-        padding-bottom: 56px
-    }
-
-    /* Универсальная сетка плашек (grid-auto) */
+    /* Расширенная сетка плашек (grid-auto) */
     .grid-auto {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -293,8 +267,8 @@
     .grid-auto--2  > * { grid-column: span 6; }
     .grid-auto--3  > * { grid-column: span 4; }
     .grid-auto--4  > * { grid-column: span 3; }
-    .grid-auto--5  > *:nth-child(-n+3)      { grid-column: span 4; }
-    .grid-auto--5  > *:nth-last-child(-n+2) { grid-column: span 6; }
+    .grid-auto--5  > *:nth-child(-n+2)      { grid-column: span 6; }
+    .grid-auto--5  > *:nth-last-child(-n+3) { grid-column: span 4; }
     .grid-auto--6  > * { grid-column: span 4; }
     .grid-auto--7  > *:nth-child(-n+4)      { grid-column: span 3; }
     .grid-auto--7  > *:nth-last-child(-n+3) { grid-column: span 4; }
@@ -312,6 +286,8 @@
     @media screen and (max-width: 768px) {
         .grid-auto { grid-template-columns: 1fr; }
     }
+
+    .coral .wrapper > div + div { margin-top: 24px; }
 
     .wrapper > .grid-auto:first-child { margin-top: 0; }
 </style>

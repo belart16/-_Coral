@@ -64,7 +64,7 @@
 
 <section class="coral">
     <article>
-        <div class="wrapper mt-1">
+        <div class="wrapper">
             <div class="weather">
                 <div class="weather__info">
                     <h2 class="title-1 mb-16"> Климат </h2>

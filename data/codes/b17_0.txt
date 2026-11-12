@@ -48,9 +48,7 @@
 
 <section class="coral">
     <article>
-        <div class="wrapper mt-1">
-            <!--h2 class="title-1 mb-24"> Заголовок секции </h2-->
-            <!--p class="text mb-24"> Текст </p-->
+        <div class="wrapper">
             <div class="big-card" style="--bg: url(//b2ccdn.coral.ru/content/landing-pages/turkey/stambul/bg.webp); --bg-m: url(//b2ccdn.coral.ru/content/landing-pages/turkey/stambul/bg_m.webp);">
                 <div class="big-card__block">
                     <h2 class="big-card__title title-3"> Заголовок </h2>

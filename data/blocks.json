@@ -6,8 +6,6 @@
     "accordion-tz": "accordion-tz.png",
     "banner-site": "banner-site.png",
     "banner-tz": "banner-tz.png",
-    "blueline-site": "blueline-site.png",
-    "blueline-tz": "blueline-tz.png",
     "cards-site": "cards-site.png",
     "cards-tz": "cards-tz.png",
     "checkmark-site": "checkmark-site.png",
@@ -20,8 +18,6 @@
     "introtext-tz": "introtext-tz.png",
     "numberblocks-site": "numberblocks-site.png",
     "numberblocks-tz": "numberblocks-tz.png",
-    "pricecards-site": "pricecards-site.png",
-    "pricecards-tz": "pricecards-tz.png",
     "slider-site": "slider-site.png",
     "slider-tz": "slider-tz.png",
     "textblock-site": "textblock-site.png",
@@ -140,31 +136,6 @@
           ]
         },
         {
-          "slug": "b06",
-          "name": "Плашки с ценой",
-          "purpose": "Плашки с ценой и бейджем. Выберите вариант с картинкой или без.",
-          "variants": [
-            {
-              "vslug": "b06_0",
-              "label": "Без картинки",
-              "code": "codes/b06_0.txt",
-              "preview": "b06_0.jpg"
-            },
-            {
-              "vslug": "b06_1",
-              "label": "С картинкой · заголовок вне блока",
-              "code": "codes/b06_1.txt",
-              "preview": "b06_1.jpg"
-            },
-            {
-              "vslug": "b06_2",
-              "label": "С картинкой · заголовок внутри блока",
-              "code": "codes/b06_2.txt",
-              "preview": "b06_2.jpg"
-            }
-          ]
-        },
-        {
           "slug": "b07",
           "name": "Плашки с галочками",
           "purpose": "Короткие пункты-достоинства с галочкой. Выберите вариант шапки — с картинкой или без.",
@@ -191,26 +162,26 @@
         },
         {
           "slug": "b08",
-          "name": "Плашки с синей линией",
-          "purpose": "Карточки с акцентной синей линией слева. Выберите вариант шапки — с картинкой или без.",
+          "name": "Плашки с заголовком",
+          "purpose": "Белые плашки с заголовком и пояснением. Выберите вариант шапки — с картинкой или без.",
           "variants": [
             {
               "vslug": "b08_0",
               "label": "Без картинки",
               "code": "codes/b08_0.txt",
-              "preview": "b08_0.jpg"
+              "preview": "b08_0.png"
             },
             {
               "vslug": "b08_1",
               "label": "С картинкой · заголовок вне блока",
               "code": "codes/b08_1.txt",
-              "preview": "b08_1.jpg"
+              "preview": "b08_1.png"
             },
             {
               "vslug": "b08_2",
               "label": "С картинкой · заголовок внутри блока",
               "code": "codes/b08_2.txt",
-              "preview": "b08_2.jpg"
+              "preview": "b08_2.png"
             }
           ]
         },
@@ -387,6 +358,19 @@
     {
       "title": "Специальные",
       "blocks": [
+        {
+          "slug": "b21",
+          "name": "Отели",
+          "purpose": "Карточки отелей с фотографиями и описаниями под общим вводным абзацем.",
+          "variants": [
+            {
+              "vslug": "b21_0",
+              "label": null,
+              "code": "codes/b21_0.txt",
+              "preview": "b21_0.png"
+            }
+          ]
+        },
         {
           "slug": "b17",
           "name": "Текст на большой картинке",

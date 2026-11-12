@@ -81,7 +81,7 @@
 </div>
 <section class="coral">
     <article>
-        <div class="wrapper mt-1">
+        <div class="wrapper">
             <h2 class="title-1 mb-24"> Заголовок секции </h2>
             <p class="text mb-24"> Ниже представленны несколько вариантов, в которых вы сможете чувствовать себя комфортно: </p>
             <div class="slider-block" data-per-view="4">
@@ -164,7 +164,7 @@
     hostReactAppReady().then(() => {
         document.querySelectorAll(".slider-block").forEach((block) => {
             const swiperEl = block.querySelector(".swiper");
-            if (!swiperEl) return;
+            if (!swiperEl || swiperEl.swiper) return;
             const perView = parseInt(block.dataset.perView || "3", 10);
             const slidesCount = swiperEl.querySelectorAll(".swiper-slide").length;
             const swiper = new Swiper(swiperEl, {

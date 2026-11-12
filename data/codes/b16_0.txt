@@ -43,7 +43,7 @@
 
 <section class="coral">
     <article>
-        <div class="wrapper mt-1">
+        <div class="wrapper">
             <h2 class="title-2 mb-24 text-center"> Интересные места </h2>
             <div class="tabs" data-tabs="">
                 <div class="tabs__nav">

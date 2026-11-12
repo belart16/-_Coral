@@ -2,7 +2,6 @@
     section.anchors--fixed>article .wrapper {
         padding-top: 10px;
         padding-bottom: 10px;
-        margin-top: 0;
     }
     
     .anchors {
@@ -59,7 +58,7 @@
 <div>
     <section class="coral js-anchor">
         <article>
-            <div class="wrapper mt-24">
+            <div class="wrapper">
                 <div class="anchors"> <a class="anchors__link" href="#anchor-1"> Что такое eSIM </a> <a class="anchors__link" href="#anchor-2"> Когда удобно </a> <a class="anchors__link" href="#anchor-3"> Топ-6 причин </a> <a class="anchors__link" href="#anchor-4"> Доступность </a> <a class="anchors__link" href="#anchor-5"> Провайдеры </a> <a class="anchors__link" href="#anchor-6"> Вопросы </a> </div>
             </div>
         </article>

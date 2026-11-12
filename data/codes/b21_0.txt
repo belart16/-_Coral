@@ -1,0 +1,135 @@
+<style>
+.hotels {
+    grid-gap: 24px;
+    grid-template-columns:repeat(2, 1fr);
+    grid-auto-rows: auto;
+    display: grid
+}
+
+@media screen and (max-width: 1024px) {
+    .hotels {
+        grid-template-columns:auto
+    }
+}
+
+.hotels__block {
+    border-radius: 20px;
+    min-height: 174px;
+    display: flex
+}
+
+@media screen and (max-width: 768px) {
+    .hotels__block {
+        flex-direction: column
+    }
+}
+
+.hotels__block--1 {
+    background-color: #d2e9fb
+}
+
+.hotels__block--2 {
+    background-color: #f2dfd5
+}
+
+.hotels__block--3 {
+    background-color: #f7eddb
+}
+
+.hotels__block--4 {
+    background-color: #c2e4f6
+}
+
+.hotels__info {
+    flex-direction: column;
+    padding: 16px 24px;
+    display: flex
+}
+
+.hotels__title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px
+}
+
+.hotels__img {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 174px;
+    display: flex
+}
+
+@media screen and (max-width: 768px) {
+    .hotels__img {
+        max-width: unset;
+        min-height: 170px
+    }
+}
+</style>
+
+<section class="coral" id="hotels">
+    <article>
+        <div class="wrapper">
+            <h2 class="title-1 mb-24">
+                Отели
+            </h2>
+            <p class="text mb-24">
+                В Аланье много достойных экономичных вариантов, а также премиум-отелей для семейного и романтического
+                отдыха.
+            </p>
+            <div class="hotels">
+                <div class="hotels__block hotels__block--1">
+                    <div class="hotels__info">
+                        <h4 class="hotels__title mb-8">
+                            Премиум отели 5★
+                        </h4>
+                        <p class="text">
+                            Первая береговая линия, широкий песчаный пляж и персонал, который предугадывает ваши
+                            желания. Подходят для требовательных туристов.
+                        </p>
+                    </div>
+                    <div class="hotels__img" style="background-image: url('https://b2ccdn.coral.ru/content/landing-pages/turkey/alania/h_1.webp')"></div>
+                </div>
+                <div class="hotels__block hotels__block--2">
+                    <div class="hotels__info">
+                        <h4 class="hotels__title mb-8">
+                            Премиум отели 5★
+                        </h4>
+                        <p class="text">
+                            Первая береговая линия, широкий песчаный пляж и персонал, который предугадывает ваши
+                            желания. Подходят для требовательных туристов.
+                        </p>
+                    </div>
+                    <div class="hotels__img" style="background-image: url('https://b2ccdn.coral.ru/content/landing-pages/turkey/alania/h_2.webp')"></div>
+                </div>
+                <div class="hotels__block hotels__block--3">
+                    <div class="hotels__info">
+                        <h4 class="hotels__title mb-8">
+                            Премиум отели 5★
+                        </h4>
+                        <p class="text">
+                            Первая береговая линия, широкий песчаный пляж и персонал, который предугадывает ваши
+                            желания. Подходят для требовательных туристов.
+                        </p>
+                    </div>
+                    <div class="hotels__img" style="background-image: url('https://b2ccdn.coral.ru/content/landing-pages/turkey/alania/h_3.webp')"></div>
+                </div>
+                <div class="hotels__block hotels__block--4">
+                    <div class="hotels__info">
+                        <h4 class="hotels__title mb-8">
+                            Премиум отели 5★
+                        </h4>
+                        <p class="text">
+                            Первая береговая линия, широкий песчаный пляж и персонал, который предугадывает ваши
+                            желания. Подходят для требовательных туристов.
+                        </p>
+                    </div>
+                    <div class="hotels__img" style="background-image: url('https://b2ccdn.coral.ru/content/landing-pages/turkey/alania/h_4.webp')"></div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>

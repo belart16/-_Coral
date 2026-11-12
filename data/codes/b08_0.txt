@@ -5,7 +5,6 @@
         padding: 24px;
         display: flex;
         flex-direction: column;
-        border-left: 4px solid #0092d0;
     }
     .accent-card__title {
         font-size: 18px;
@@ -17,9 +16,8 @@
 
 <section class="coral">
     <article>
-        <div class="wrapper mt-1">
+        <div class="wrapper">
             <h2 class="title-1 mb-24"> Заголовок секции </h2>
-            <!--p class="text mb-24"> Текст </p-->
             <div class="grid-auto grid-auto--3">
 
                 <!-- Плашка -->

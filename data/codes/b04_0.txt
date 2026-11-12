@@ -134,7 +134,7 @@
 
 <section class="coral">
     <article>
-        <div class="wrapper mt-1">
+        <div class="wrapper">
             <h2 class="title-1 mb-24">Всегда на связи с вами</h2>
             <div class="contacts">
                 <div class="contacts__block">

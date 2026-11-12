@@ -6,9 +6,8 @@
         display: flex
     }
 
-    /* блок с картинкой — не ниже 260px, чтобы картинка не сжималась при коротком тексте */
     .panel:has(> .panel__img) {
-        min-height: 260px
+        min-height: 80px
     }
 
     .panel + .panel {
@@ -111,14 +110,13 @@
 
 <section class="coral">
     <article>
-        <div class="wrapper mt-1">
+        <div class="wrapper">
             <div class="panel">
                 <div class="panel__col">
                     <div class="panel__info">
                         <h2 class="title-2 mb-16"> В июле сходите в горы Рас-эль-Хаймы </h2>
                         <p class="text"> Благодаря горам и близости к океану климат здесь переносится гораздо комфортнее, чем в Дубае или Абу-Даби. Поэтому рекомендуем подняться к пикам Джебель-Джейс — насладиться прохладой, каньонами, уникальными видами и даже пролететь на зиплайне над пропастью. Впечатлений получите массу. </p>
                         <p class="text"> А еще в это время многие отели предлагают специальные «летние пакеты», включающие питание по системе «Все включено», что делает отдых очень бюджетным. Так что многие путешественники выбирают июльские каникулы, чтобы поближе познакомиться с роскошью ОАЭ. </p>
-                        <!--a href="https://www.coral.ru/" class="coral-button mt-16" target="_blank" rel="noopener noreferrer"> Выбрать тур </a-->
                     </div>
                 </div>
                 <div class="panel__img" style="background-image: url(https://b2ccdn.coral.ru/content/img/vietnam/shutterstock_1926290822.webp);">
